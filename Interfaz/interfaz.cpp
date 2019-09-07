@@ -3,6 +3,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDir>
+#include <QPixmap>
+
 
 Interfaz::Interfaz(QWidget *parent) :
     QMainWindow(parent),
@@ -15,6 +17,11 @@ Interfaz::Interfaz(QWidget *parent) :
     ui->filtros->addItem("Filtro Mosaico");
     ui->pushButton_2->setEnabled(false);
 
+    setMaximumSize(QSize(1090,620));
+    setMinimumSize(QSize(1090, 620));
+
+    setWindowFlags(Qt::WindowCloseButtonHint);
+
 }
 
 
@@ -25,8 +32,15 @@ Interfaz::~Interfaz()
 
 void Interfaz::on_pushButton_clicked()
 {
-    QString imagen =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
+    QString imagen =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath()); 
     ui->pushButton_2->setEnabled(true);
+    QPixmap pix(imagen);
+    int w = ui->label->width();
+    int h = ui->label->height();
+    ui->label->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+    //cout<<imagen<<endl;
+    QMessageBox::information(this, "...", imagen);
+
 }
 
 void Interfaz::on_pushButton_2_clicked()

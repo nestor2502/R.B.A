@@ -14,13 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -34,45 +34,55 @@ public:
     QPushButton *pushButton_2;
     QLabel *label;
     QLabel *label_2;
+    QFrame *line;
+    QFrame *line_2;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *Interfaz)
     {
         if (Interfaz->objectName().isEmpty())
             Interfaz->setObjectName(QStringLiteral("Interfaz"));
-        Interfaz->resize(1077, 659);
-        Interfaz->setStyleSheet(QStringLiteral("background-color: rgb(34, 38, 59);"));
+        Interfaz->resize(1093, 664);
+        Interfaz->setStyleSheet(QStringLiteral("background-color: rgb(50, 50, 50);"));
         centralWidget = new QWidget(Interfaz);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         filtros = new QComboBox(centralWidget);
         filtros->setObjectName(QStringLiteral("filtros"));
-        filtros->setGeometry(QRect(20, 90, 211, 31));
+        filtros->setGeometry(QRect(20, 108, 231, 31));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(20, 10, 211, 31));
+        pushButton->setGeometry(QRect(20, 28, 231, 31));
+        pushButton->setStyleSheet(QStringLiteral(""));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(20, 50, 211, 31));
+        pushButton_2->setGeometry(QRect(20, 68, 231, 31));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 160, 191, 411));
-        label->setStyleSheet(QStringLiteral("background-color: rgb(34, 38, 69);"));
+        label->setGeometry(QRect(20, 210, 231, 201));
+        label->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
         label->setPixmap(QPixmap(QString::fromUtf8(":/LOGO.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(260, 20, 771, 561));
-        label_2->setStyleSheet(QStringLiteral("background-color: rgb(34, 38, 69);"));
+        label_2->setGeometry(QRect(290, 30, 771, 561));
+        label_2->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
+        label_2->setScaledContents(false);
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(260, 0, 20, 621));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line_2 = new QFrame(centralWidget);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setGeometry(QRect(10, 160, 251, 20));
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
         Interfaz->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Interfaz);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1077, 22));
+        menuBar->setGeometry(QRect(0, 0, 1093, 22));
         Interfaz->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(Interfaz);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        Interfaz->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(Interfaz);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         Interfaz->setStatusBar(statusBar);

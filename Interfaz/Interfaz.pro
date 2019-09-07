@@ -28,7 +28,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        interfaz.cpp
+        interfaz.cpp \
+    filemanager.cpp
 
 HEADERS += \
         interfaz.h

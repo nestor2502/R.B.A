@@ -51,11 +51,13 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Interfaz/main.cpp \
-		../Interfaz/interfaz.cpp qrc_logof.cpp \
+		../Interfaz/interfaz.cpp \
+		../Interfaz/filemanager.cpp qrc_logof.cpp \
 		qrc_images.cpp \
 		moc_interfaz.cpp
 OBJECTS       = main.o \
 		interfaz.o \
+		filemanager.o \
 		qrc_logof.o \
 		qrc_images.o \
 		moc_interfaz.o
@@ -134,7 +136,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Interfaz/Interfaz.pro ../Interfaz/interfaz.h ../Interfaz/main.cpp \
-		../Interfaz/interfaz.cpp
+		../Interfaz/interfaz.cpp \
+		../Interfaz/filemanager.cpp
 QMAKE_TARGET  = Interfaz
 DESTDIR       = 
 TARGET        = Interfaz
@@ -324,7 +327,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../Interfaz/logof.qrc ../Interfaz/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/interfaz.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Interfaz/main.cpp ../Interfaz/interfaz.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Interfaz/main.cpp ../Interfaz/interfaz.cpp ../Interfaz/filemanager.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/interfaz.ui $(DISTDIR)/
 
 
@@ -401,6 +404,9 @@ main.o: ../Interfaz/main.cpp ../Interfaz/interfaz.h
 interfaz.o: ../Interfaz/interfaz.cpp ../Interfaz/interfaz.h \
 		ui_interfaz.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o interfaz.o ../Interfaz/interfaz.cpp
+
+filemanager.o: ../Interfaz/filemanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filemanager.o ../Interfaz/filemanager.cpp
 
 qrc_logof.o: qrc_logof.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_logof.o qrc_logof.cpp

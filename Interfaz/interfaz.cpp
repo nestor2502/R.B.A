@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QDir>
 #include <QPixmap>
-
+#include "filemanager.cpp"
 
 Interfaz::Interfaz(QWidget *parent) :
     QMainWindow(parent),
@@ -32,14 +32,22 @@ Interfaz::~Interfaz()
 
 void Interfaz::on_pushButton_clicked()
 {
-    QString imagen =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath()); 
-    ui->pushButton_2->setEnabled(true);
-    QPixmap pix(imagen);
-    int w = ui->label->width();
-    int h = ui->label->height();
-    ui->label->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-    //cout<<imagen<<endl;
-    QMessageBox::information(this, "...", imagen);
+    QString image =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
+    FileManager manager;
+    std::string path = image.toUtf8().constData();
+    manager.openFilee(path);
+    bool correctness= manager.verifyFile();
+   if(correctness==1){
+        ui->pushButton_2->setEnabled(true);
+        QPixmap pix(image);
+        int w = ui->label->width();
+        int h = ui->label->height();
+        ui->label->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+
+   else{
+       QMessageBox::information(this, "...", "Archivo no aceptado");
+   }
+
 
 }
 

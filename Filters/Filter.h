@@ -7,15 +7,14 @@
 #include <string>
 using namespace std;
 using namespace  cv;
-
+#ifndef Filter_H
+#define Filter_H
 /**
  * @class Filter
  * @brief Clase padre que contiene que contiene lo basico que debe tener un filtro
  */
 class Filter{
 protected:
-    /** imagen a modificar. */
-    Mat img;
     /** Ruta de la imagen a la que se le aplico el filtro */
     string path;
     /** contador del número de imagenes creadas */
@@ -41,3 +40,4 @@ public:
      */
     string getPathImage(void);
 };
+#endif

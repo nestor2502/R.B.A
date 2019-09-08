@@ -8,11 +8,11 @@ SOURCES += \
         main.cpp \
     RedFilter.cpp \
     Filter.cpp \
-    bluefilter.cpp \
-    greenfilter.cpp
+    GreenFilter.cpp \
+    BlueFilter.cpp
 
 HEADERS += \
     Filter.h \
     RedFilter.h \
-    bluefilter.h \
-    greenfilter.h
+    GreenFilter.h \
+    BlueFilter.h

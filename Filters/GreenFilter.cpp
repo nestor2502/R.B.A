@@ -1,16 +1,17 @@
-#include <RedFilter.h>
+#include <GreenFilter.h>
 /**
  * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
  * @param pathImage ruta de la imagen.
  */
-RedFilter::RedFilter(string pathImage){
+GreenFilter::GreenFilter(string pathImage){
     path = pathImage;
 }
-void RedFilter::applyFilter()
+
+void GreenFilter::applyFilter()
 {
-    Mat img = imread(path);
+    Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
-    imshow("../rojo.jpg",img);
+    imshow("../verde.jpg",img);
     waitKey(0);
 }
 /**
@@ -21,14 +22,13 @@ void RedFilter::applyFilter()
  * @param ye coordenada en y del pixel final.
  * @param img imagen a colorear.
  */
-void RedFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
+void GreenFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
     for (int i = xb; i < xe; i++) {
         for (int j = yb; j < ye; j++) {
             Vec3b pixel = img.at<Vec3b>(i,j);
-            int r = pixel[2];
-            img.at<Vec3b>(i,j) = {0,0,(uchar)r};
+            int g = pixel[1];
+            img.at<Vec3b>(i,j) = {0,(uchar)g,0};
         }
-
     }
 }

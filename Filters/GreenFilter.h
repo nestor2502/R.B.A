@@ -1,13 +1,13 @@
 #include <Filter.h>
-#ifndef RedFilter_H
-#define RedFilter_H
-class RedFilter : Filter {
+#ifndef GreenFilter_H
+#define GreenFilter_H
+class GreenFilter : Filter {
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
      * @param pathImage ruta de la imagen.
      */
-    RedFilter(string pathImage);
+    GreenFilter(string pathImage);
     /**
      * @brief aplica el filtro correspondiente.
      */

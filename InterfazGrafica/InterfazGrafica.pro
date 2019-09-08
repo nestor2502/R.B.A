@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = InterfazGrafica
 TEMPLATE = app
-
+INCLUDEPATH += ../Filters
 INCLUDEPATH += /usr/local/include/opencv
 LIBS +=  -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
 
@@ -30,11 +30,13 @@ SOURCES += \
         main.cpp \
         gui.cpp \
     filemanager.cpp \
-    mosaicoform.cpp
+    mosaicoform.cpp \
+    driver.cpp
 
 HEADERS += \
         gui.h \
-    mosaicoform.h
+    mosaicoform.h \
+    driver.h
 
 FORMS += \
         gui.ui \

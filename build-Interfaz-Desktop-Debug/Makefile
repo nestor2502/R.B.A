@@ -38,7 +38,7 @@ DISTNAME      = Interfaz1.0.0
 DISTDIR = /home/nestor/R.B.A/build-Interfaz-Desktop-Debug/.tmp/Interfaz1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -51,11 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Interfaz/main.cpp \
-		../Interfaz/interfaz.cpp qrc_logof.cpp \
+		../Interfaz/interfaz.cpp qrc_images.cpp \
 		moc_interfaz.cpp
 OBJECTS       = main.o \
 		interfaz.o \
-		qrc_logof.o \
+		qrc_images.o \
 		moc_interfaz.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -219,7 +219,7 @@ Makefile: ../Interfaz/Interfaz.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Interfaz/Interfaz.pro \
-		../Interfaz/logof.qrc \
+		../Interfaz/images.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
@@ -299,7 +299,7 @@ Makefile: ../Interfaz/Interfaz.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../Interfaz/Interfaz.pro:
-../Interfaz/logof.qrc:
+../Interfaz/images.qrc:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
@@ -317,7 +317,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../Interfaz/logof.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../Interfaz/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/interfaz.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/main.cpp ../Interfaz/interfaz.cpp $(DISTDIR)/
@@ -345,13 +345,13 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_logof.cpp
+compiler_rcc_make_all: qrc_images.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_logof.cpp
-qrc_logof.cpp: ../Interfaz/logof.qrc \
+	-$(DEL_FILE) qrc_images.cpp
+qrc_images.cpp: ../Interfaz/images.qrc \
 		/usr/lib/qt5/bin/rcc \
-		../Interfaz/LOGO.png
-	/usr/lib/qt5/bin/rcc -name logof ../Interfaz/logof.qrc -o qrc_logof.cpp
+		../Interfaz/Img/Logo.png
+	/usr/lib/qt5/bin/rcc -name images ../Interfaz/images.qrc -o qrc_images.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
@@ -386,15 +386,16 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-main.o: ../Interfaz/main.cpp 
+main.o: ../Interfaz/main.cpp ../Interfaz/interfaz.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Interfaz/main.cpp
 
 interfaz.o: ../Interfaz/interfaz.cpp ../Interfaz/interfaz.h \
-		ui_interfaz.h
+		ui_interfaz.h \
+		../Interfaz/filemanager.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o interfaz.o ../Interfaz/interfaz.cpp
 
-qrc_logof.o: qrc_logof.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_logof.o qrc_logof.cpp
+qrc_images.o: qrc_images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
 moc_interfaz.o: moc_interfaz.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_interfaz.o moc_interfaz.cpp

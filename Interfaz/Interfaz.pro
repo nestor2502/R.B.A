@@ -12,7 +12,7 @@ TARGET = Interfaz
 TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
-LIBS +=  -lopencv_core -lopencv_imgcodecs -lopencv_highgui
+LIBS +=  -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -28,7 +28,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        interfaz.cpp
+        interfaz.cpp \
+    filemanager.cpp
 
 HEADERS += \
         interfaz.h
@@ -37,4 +38,5 @@ FORMS += \
         interfaz.ui
 
 RESOURCES += \
-    logof.qrc
+    images.qrc
+RC_ICONS = icono.ico

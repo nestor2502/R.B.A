@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/n">
+        <file>icono.jpg</file>
+    </qresource>
+</RCC>

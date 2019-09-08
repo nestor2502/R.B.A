@@ -7,8 +7,12 @@ LIBS += -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_videostab -
 SOURCES += \
         main.cpp \
     RedFilter.cpp \
-    Filter.cpp
+    Filter.cpp \
+    bluefilter.cpp \
+    greenfilter.cpp
 
 HEADERS += \
     Filter.h \
-    RedFilter.h
+    RedFilter.h \
+    bluefilter.h \
+    greenfilter.h

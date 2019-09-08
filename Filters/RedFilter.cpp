@@ -8,7 +8,6 @@ RedFilter::RedFilter(string pathImage){
 void RedFilter::applyFilter()
 {
     if (img.empty())
-         cout << "Hola Mundo" << endl;
     RedFilter::paintRegion(0,0,img.rows,img.cols,img);
     for (int i = 0; i < img.rows; i++) {
         for (int j = 0; i < img.cols; i++) {

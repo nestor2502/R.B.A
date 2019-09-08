@@ -61,13 +61,13 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 210, 231, 201));
         label->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/LOGO.png")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/img/Img/Logo.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(290, 30, 771, 561));
         label_2->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
-        label_2->setScaledContents(false);
+        label_2->setScaledContents(true);
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         line->setGeometry(QRect(260, 0, 20, 621));

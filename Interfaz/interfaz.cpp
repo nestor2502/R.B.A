@@ -11,16 +11,17 @@ Interfaz::Interfaz(QWidget *parent) :
     ui(new Ui::Interfaz)
 {
     ui->setupUi(this);
+    setMaximumSize(QSize(1090,620));
+    setMinimumSize(QSize(1090, 620));
+    QWidget::setWindowTitle ( "R B A" );
+    setWindowFlags(Qt::WindowCloseButtonHint);
     ui->filtros->addItem("Filtro Rojo");
     ui->filtros->addItem("Filtro Verde");
     ui->filtros->addItem("Filtro Azul");
     ui->filtros->addItem("Filtro Mosaico");
     ui->pushButton_2->setEnabled(false);
 
-    setMaximumSize(QSize(1090,620));
-    setMinimumSize(QSize(1090, 620));
 
-    setWindowFlags(Qt::WindowCloseButtonHint);
 
 }
 

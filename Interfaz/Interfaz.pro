@@ -38,5 +38,5 @@ FORMS += \
         interfaz.ui
 
 RESOURCES += \
-    logof.qrc \
     images.qrc
+RC_ICONS = icono.ico

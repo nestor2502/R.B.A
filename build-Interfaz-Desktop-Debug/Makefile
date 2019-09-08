@@ -51,14 +51,10 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Interfaz/main.cpp \
-		../Interfaz/interfaz.cpp \
-		../Interfaz/filemanager.cpp qrc_logof.cpp \
-		qrc_images.cpp \
+		../Interfaz/interfaz.cpp qrc_images.cpp \
 		moc_interfaz.cpp
 OBJECTS       = main.o \
 		interfaz.o \
-		filemanager.o \
-		qrc_logof.o \
 		qrc_images.o \
 		moc_interfaz.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -136,8 +132,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Interfaz/Interfaz.pro ../Interfaz/interfaz.h ../Interfaz/main.cpp \
-		../Interfaz/interfaz.cpp \
-		../Interfaz/filemanager.cpp
+		../Interfaz/interfaz.cpp
 QMAKE_TARGET  = Interfaz
 DESTDIR       = 
 TARGET        = Interfaz
@@ -224,7 +219,6 @@ Makefile: ../Interfaz/Interfaz.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Interfaz/Interfaz.pro \
-		../Interfaz/logof.qrc \
 		../Interfaz/images.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
@@ -305,7 +299,6 @@ Makefile: ../Interfaz/Interfaz.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../Interfaz/Interfaz.pro:
-../Interfaz/logof.qrc:
 ../Interfaz/images.qrc:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
@@ -324,10 +317,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../Interfaz/logof.qrc ../Interfaz/images.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../Interfaz/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/interfaz.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Interfaz/main.cpp ../Interfaz/interfaz.cpp ../Interfaz/filemanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Interfaz/main.cpp ../Interfaz/interfaz.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Interfaz/interfaz.ui $(DISTDIR)/
 
 
@@ -352,14 +345,9 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_logof.cpp qrc_images.cpp
+compiler_rcc_make_all: qrc_images.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_logof.cpp qrc_images.cpp
-qrc_logof.cpp: ../Interfaz/logof.qrc \
-		/usr/lib/qt5/bin/rcc \
-		../Interfaz/LOGO.png
-	/usr/lib/qt5/bin/rcc -name logof ../Interfaz/logof.qrc -o qrc_logof.cpp
-
+	-$(DEL_FILE) qrc_images.cpp
 qrc_images.cpp: ../Interfaz/images.qrc \
 		/usr/lib/qt5/bin/rcc \
 		../Interfaz/Img/Logo.png
@@ -402,14 +390,9 @@ main.o: ../Interfaz/main.cpp ../Interfaz/interfaz.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Interfaz/main.cpp
 
 interfaz.o: ../Interfaz/interfaz.cpp ../Interfaz/interfaz.h \
-		ui_interfaz.h
+		ui_interfaz.h \
+		../Interfaz/filemanager.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o interfaz.o ../Interfaz/interfaz.cpp
-
-filemanager.o: ../Interfaz/filemanager.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filemanager.o ../Interfaz/filemanager.cpp
-
-qrc_logof.o: qrc_logof.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_logof.o qrc_logof.cpp
 
 qrc_images.o: qrc_images.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp

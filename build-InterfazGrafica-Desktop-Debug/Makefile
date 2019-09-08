@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../InterfazGrafica -I. -isystem /usr/local/include/opencv -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../InterfazGrafica -I. -I../Filters -isystem /usr/local/include/opencv -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -52,12 +52,22 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../InterfazGrafica/main.cpp \
 		../InterfazGrafica/gui.cpp \
-		../InterfazGrafica/mosaicoform.cpp qrc_logo.cpp \
+		../InterfazGrafica/mosaicoform.cpp \
+		../InterfazGrafica/driver.cpp \
+		../Filters/RedFilter.cpp \
+		../Filters/GreenFilter.cpp \
+		../Filters/BlueFilter.cpp \
+		../Filters/Filter.cpp qrc_logo.cpp \
 		moc_gui.cpp \
 		moc_mosaicoform.cpp
 OBJECTS       = main.o \
 		gui.o \
 		mosaicoform.o \
+		driver.o \
+		RedFilter.o \
+		GreenFilter.o \
+		BlueFilter.o \
+		Filter.o \
 		qrc_logo.o \
 		moc_gui.o \
 		moc_mosaicoform.o
@@ -136,9 +146,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../InterfazGrafica/InterfazGrafica.pro ../InterfazGrafica/gui.h \
-		../InterfazGrafica/mosaicoform.h ../InterfazGrafica/main.cpp \
+		../InterfazGrafica/mosaicoform.h \
+		../InterfazGrafica/driver.h \
+		../Filters/RedFilter.h \
+		../Filters/GreenFilter.h \
+		../Filters/BlueFilter.h \
+		../Filters/Filter.h ../InterfazGrafica/main.cpp \
 		../InterfazGrafica/gui.cpp \
-		../InterfazGrafica/mosaicoform.cpp
+		../InterfazGrafica/mosaicoform.cpp \
+		../InterfazGrafica/driver.cpp \
+		../Filters/RedFilter.cpp \
+		../Filters/GreenFilter.cpp \
+		../Filters/BlueFilter.cpp \
+		../Filters/Filter.cpp
 QMAKE_TARGET  = InterfazGrafica
 DESTDIR       = 
 TARGET        = InterfazGrafica
@@ -325,8 +345,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../InterfazGrafica/logo.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../InterfazGrafica/gui.h ../InterfazGrafica/mosaicoform.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../InterfazGrafica/main.cpp ../InterfazGrafica/gui.cpp ../InterfazGrafica/mosaicoform.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../InterfazGrafica/gui.h ../InterfazGrafica/mosaicoform.h ../InterfazGrafica/driver.h ../Filters/RedFilter.h ../Filters/GreenFilter.h ../Filters/BlueFilter.h ../Filters/Filter.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../InterfazGrafica/main.cpp ../InterfazGrafica/gui.cpp ../InterfazGrafica/mosaicoform.cpp ../InterfazGrafica/driver.cpp ../Filters/RedFilter.cpp ../Filters/GreenFilter.cpp ../Filters/BlueFilter.cpp ../Filters/Filter.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../InterfazGrafica/gui.ui ../InterfazGrafica/mosaicoform.ui $(DISTDIR)/
 
 
@@ -371,12 +391,12 @@ compiler_moc_header_clean:
 moc_gui.cpp: ../InterfazGrafica/gui.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nestor/R.B.A/InterfazGrafica -I/usr/local/include/opencv -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../InterfazGrafica/gui.h -o moc_gui.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nestor/R.B.A/InterfazGrafica -I/home/nestor/R.B.A/Filters -I/usr/local/include/opencv -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../InterfazGrafica/gui.h -o moc_gui.cpp
 
 moc_mosaicoform.cpp: ../InterfazGrafica/mosaicoform.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nestor/R.B.A/InterfazGrafica -I/usr/local/include/opencv -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../InterfazGrafica/mosaicoform.h -o moc_mosaicoform.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nestor/R.B.A/InterfazGrafica -I/home/nestor/R.B.A/Filters -I/usr/local/include/opencv -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../InterfazGrafica/mosaicoform.h -o moc_mosaicoform.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -413,6 +433,27 @@ gui.o: ../InterfazGrafica/gui.cpp ../InterfazGrafica/gui.h \
 mosaicoform.o: ../InterfazGrafica/mosaicoform.cpp ../InterfazGrafica/mosaicoform.h \
 		ui_mosaicoform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mosaicoform.o ../InterfazGrafica/mosaicoform.cpp
+
+driver.o: ../InterfazGrafica/driver.cpp ../InterfazGrafica/driver.h \
+		../Filters/RedFilter.h \
+		../Filters/Filter.h \
+		../Filters/GreenFilter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o driver.o ../InterfazGrafica/driver.cpp
+
+RedFilter.o: ../Filters/RedFilter.cpp ../Filters/RedFilter.h \
+		../Filters/Filter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RedFilter.o ../Filters/RedFilter.cpp
+
+GreenFilter.o: ../Filters/GreenFilter.cpp ../Filters/GreenFilter.h \
+		../Filters/Filter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GreenFilter.o ../Filters/GreenFilter.cpp
+
+BlueFilter.o: ../Filters/BlueFilter.cpp ../Filters/BlueFilter.h \
+		../Filters/Filter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BlueFilter.o ../Filters/BlueFilter.cpp
+
+Filter.o: ../Filters/Filter.cpp ../Filters/Filter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Filter.o ../Filters/Filter.cpp
 
 qrc_logo.o: qrc_logo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_logo.o qrc_logo.cpp

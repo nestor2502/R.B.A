@@ -26,10 +26,11 @@ void GUI::on_actionNuev_Imagen_triggered()
 {
     QString image =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
     FileManager manager;
-    std::string path = image.toUtf8().constData();
-    manager.openFilee(path);
+    std::string _path = image.toUtf8().constData();
+    manager.openFilee(_path);
     bool correctness= manager.verifyFile();
    if(correctness==1){
+       path = _path;
         QPixmap pix(image);
         int w = ui->label->width();
         int h = ui->label->height();
@@ -48,22 +49,34 @@ void GUI::on_actionGruardad_Archivo_triggered()
 
 void GUI::on_actionFiltroRojo_triggered()
 {
-    QMessageBox::information(this, "...", "Filtro Rojo ");
+
+    if(path !="")
+    controlador->applyRedFilter(path);
+    else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 
 void GUI::on_actionFiltro_Verde_triggered()
 {
-    QMessageBox::information(this, "...", "Filtro Verde ");
+
+     if(path !="")
+    controlador->applyGreenFilter(path);
+     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 
 void GUI::on_actionFiltro_Azul_triggered()
 {
-    QMessageBox::information(this, "...", "Filtro Azul ");
+
+    if(path !="")
+    controlador->applyBlueFilter(path);
+    else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 
 void GUI::on_actionFiltroMosaico_triggered()
 {
+    if(path !=""){
+
     MosaicoForm *mosaico = new MosaicoForm(this);
     mosaico->setModal(true);
-    mosaico->show();
+    mosaico->show();}
+    else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }

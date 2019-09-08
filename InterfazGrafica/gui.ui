@@ -95,7 +95,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNuev_Imagen">
    <property name="text">
-    <string>Nuev Imagen</string>
+    <string>Nueva Imagen</string>
    </property>
   </action>
   <action name="actionGruardad_Archivo">

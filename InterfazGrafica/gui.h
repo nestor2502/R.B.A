@@ -2,7 +2,8 @@
 #define GUI_H
 
 #include <QMainWindow>
-
+#include "driver.h"
+#include <string>
 namespace Ui {
 class GUI;
 }
@@ -30,6 +31,8 @@ private slots:
 
 private:
     Ui::GUI *ui;
+    Driver *controlador = new Driver();
+    string path;
 };
 
 #endif // GUI_H

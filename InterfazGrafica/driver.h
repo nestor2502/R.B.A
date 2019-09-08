@@ -8,10 +8,10 @@ class Driver
 private:
     string path;
 public:
-    Driver(string path);
-    void applyRedFilter();
-    void applyGreenFilter();
-    void applyBlueFilter();
+    Driver();
+    void applyRedFilter(string path);
+    void applyGreenFilter(string path);
+    void applyBlueFilter(string path);
 
 };
 

@@ -1,21 +1,23 @@
 #include "driver.h"
 #include "RedFilter.h"
 #include "GreenFilter.h"
+#include "BlueFilter.h"
 using namespace std;
-Driver::Driver(string _path)
+Driver::Driver()
 {
-path = _path;
+
 
 }
-void Driver::applyRedFilter(){
-   //RedFilter *rojo = new RedFilter(path);
-    //rojo->applyFilter();
+void Driver::applyRedFilter(string path){
+   RedFilter *rojo = new RedFilter(path);
+    rojo->applyFilter();
 
 }
-void Driver::applyGreenFilter(){
-    GreenFilter *verde = new GreenFilter("/home/naju/R.B.A/Filters/img2.jpg");
+void Driver::applyGreenFilter(string path){
+    GreenFilter *verde = new GreenFilter(path);
     verde->applyFilter();
 }
-void Driver::applyBlueFilter(){
-
+void Driver::applyBlueFilter(string path){
+    BlueFilter *azul = new BlueFilter(path);
+    azul->applyFilter();
 }

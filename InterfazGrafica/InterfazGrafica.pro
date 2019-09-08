@@ -31,12 +31,20 @@ SOURCES += \
         gui.cpp \
     filemanager.cpp \
     mosaicoform.cpp \
-    driver.cpp
+    driver.cpp \
+    ../Filters/RedFilter.cpp \
+    ../Filters/GreenFilter.cpp \
+    ../Filters/BlueFilter.cpp \
+    ../Filters/Filter.cpp
 
 HEADERS += \
         gui.h \
     mosaicoform.h \
-    driver.h
+    driver.h \
+    ../Filters/RedFilter.h \
+    ../Filters/GreenFilter.h \
+    ../Filters/BlueFilter.h \
+    ../Filters/Filter.h
 
 FORMS += \
         gui.ui \

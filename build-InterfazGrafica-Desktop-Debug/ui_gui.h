@@ -66,6 +66,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(30, 20, 271, 231));
         label->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/Logo.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -104,7 +105,7 @@ public:
     void retranslateUi(QMainWindow *GUI)
     {
         GUI->setWindowTitle(QApplication::translate("GUI", "GUI", Q_NULLPTR));
-        actionNuev_Imagen->setText(QApplication::translate("GUI", "Nuev Imagen", Q_NULLPTR));
+        actionNuev_Imagen->setText(QApplication::translate("GUI", "Nueva Imagen", Q_NULLPTR));
         actionGruardad_Archivo->setText(QApplication::translate("GUI", "Guardar Imagen", Q_NULLPTR));
         actionFiltroRojo->setText(QApplication::translate("GUI", "FiltroRojo", Q_NULLPTR));
         actionFiltro_Verde->setText(QApplication::translate("GUI", "Filtro Verde", Q_NULLPTR));

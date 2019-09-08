@@ -17,8 +17,6 @@ class Filter{
 protected:
     /** Ruta de la imagen a la que se le aplico el filtro */
     string path;
-    /** contador del número de imagenes creadas */
-    static int count;
     /**
      * @brief colorea una region de pixeles del rectangulo de pixeles delimitado por los pixeles (xb,yb),(xe,ye).
      * @param xb coordenada en x del pixel inicial.
@@ -39,5 +37,10 @@ public:
      * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
      */
     string getPathImage(void);
+    /**
+     * @brief regresa la extension de la imagen.
+     * @return la extension de la imagen.
+     */
+    string extension();
 };
 #endif

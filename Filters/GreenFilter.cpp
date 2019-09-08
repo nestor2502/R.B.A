@@ -11,8 +11,8 @@ void GreenFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
-    imshow("../verde.jpg",img);
-    waitKey(0);
+    path = "../cache/green."+extension();
+    imwrite(path,img);
 }
 /**
  * @brief colorea una region de pixeles del rectangulo de pixeles delimitado por los pixeles (xb,yb),(xe,ye).
@@ -24,8 +24,10 @@ void GreenFilter::applyFilter()
  */
 void GreenFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
-    for (int i = xb; i < xe; i++) {
-        for (int j = yb; j < ye; j++) {
+    for (int i = xb; i < xe; i++)
+    {
+        for (int j = yb; j < ye; j++)
+        {
             Vec3b pixel = img.at<Vec3b>(i,j);
             int g = pixel[1];
             img.at<Vec3b>(i,j) = {0,(uchar)g,0};

@@ -10,8 +10,8 @@ void RedFilter::applyFilter()
 {
     Mat img = imread(path);
     paintRegion(0,0,img.rows,img.cols,img);
-    imshow("../rojo.jpg",img);
-    waitKey(0);
+    path = "../cache/red."+extension();
+    imwrite(path,img);
 }
 /**
  * @brief colorea una region de pixeles del rectangulo de pixeles delimitado por los pixeles (xb,yb),(xe,ye).
@@ -29,6 +29,5 @@ void RedFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
             int r = pixel[2];
             img.at<Vec3b>(i,j) = {0,0,(uchar)r};
         }
-
     }
 }

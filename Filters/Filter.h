@@ -14,6 +14,8 @@ using namespace  cv;
  */
 class Filter{
 protected:
+    /** imagen a modificar. */
+    Mat img;
     /** Ruta de la imagen a la que se le aplico el filtro */
     string path;
     /** contador del número de imagenes creadas */
@@ -26,7 +28,7 @@ protected:
      * @param ye coordenada en y del pixel final.
      * @param img imagen a colorear.
      */
-    virtual void paintRegion(int xb, int yb, int xe, int ye, Mat *img);
+    virtual void paintRegion(int xb, int yb, int xe, int ye, Mat img);
 public:
     virtual ~Filter();
     /**

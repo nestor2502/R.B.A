@@ -13,13 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -36,17 +36,17 @@ public:
     QWidget *centralWidget;
     QLabel *label;
     QLabel *label_2;
+    QFrame *line;
     QMenuBar *menuBar;
     QMenu *menuArchivo;
     QMenu *menuFiltros;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *GUI)
     {
         if (GUI->objectName().isEmpty())
             GUI->setObjectName(QStringLiteral("GUI"));
-        GUI->resize(1207, 730);
+        GUI->resize(1172, 815);
         GUI->setStyleSheet(QStringLiteral("background-color: rgb(50, 50, 50);"));
         actionNuev_Imagen = new QAction(GUI);
         actionNuev_Imagen->setObjectName(QStringLiteral("actionNuev_Imagen"));
@@ -64,26 +64,29 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 20, 271, 231));
+        label->setGeometry(QRect(10, 20, 271, 231));
         label->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
         label->setPixmap(QPixmap(QString::fromUtf8(":/Logo.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(330, 20, 851, 641));
+        label_2->setGeometry(QRect(300, 20, 851, 751));
         label_2->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(280, 20, 20, 691));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
         GUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(GUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1207, 22));
+        menuBar->setGeometry(QRect(0, 0, 1172, 22));
+        menuBar->setStyleSheet(QStringLiteral("background-color: rgb(211, 215, 207);"));
         menuArchivo = new QMenu(menuBar);
         menuArchivo->setObjectName(QStringLiteral("menuArchivo"));
         menuFiltros = new QMenu(menuBar);
         menuFiltros->setObjectName(QStringLiteral("menuFiltros"));
         GUI->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(GUI);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        GUI->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(GUI);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         GUI->setStatusBar(statusBar);

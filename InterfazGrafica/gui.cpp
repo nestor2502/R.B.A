@@ -11,10 +11,11 @@ GUI::GUI(QWidget *parent) :
     ui(new Ui::GUI)
 {
     ui->setupUi(this);
-    setMaximumSize(QSize(1210,625));
-    setMinimumSize(QSize(1200, 625));
+    setMaximumSize(QSize(1172,815));
+    setMinimumSize(QSize(1172, 815));
     QWidget::setWindowTitle ( "R B A" );
-    setWindowFlags(Qt::WindowCloseButtonHint);
+    //setWindowFlags(Qt::WindowCloseButtonHint);
+    Qt::WindowFlags flags = Qt::Window |  Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint; this->setWindowFlags(flags);
 }
 
 GUI::~GUI()
@@ -31,6 +32,7 @@ void GUI::on_actionNuev_Imagen_triggered()
     bool correctness= manager.verifyFile();
    if(correctness==1){
        path = _path;
+
         QPixmap pix(image);
         int w = ui->label->width();
         int h = ui->label->height();
@@ -43,6 +45,9 @@ void GUI::on_actionNuev_Imagen_triggered()
 
 void GUI::on_actionGruardad_Archivo_triggered()
 {
+    if(path !="")
+    QMessageBox::information(this, "...", "save");
+    else
     QString save =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
     //QMessageBox::information(this, "...", save);
 }

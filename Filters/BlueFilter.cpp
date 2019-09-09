@@ -1,6 +1,4 @@
 #include <BlueFilter.h>
-#include <iostream>
-using namespace std;
 /**
  * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
  * @param pathImage ruta de la imagen.
@@ -8,12 +6,14 @@ using namespace std;
 BlueFilter::BlueFilter(string pathImage){
     path = pathImage;
 }
+/**
+ * @brief aplica el filtro correspondiente.
+ */
 void BlueFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
     path = "../cache/blue." + extension();
-    cout << "azul" + path << endl;
     imwrite(path,img);
 }
 /**

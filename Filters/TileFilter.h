@@ -39,7 +39,8 @@ protected:
      * @param yb coordenada en y del pixel inicial.
      * @param xe coordenada en x del pixel final.
      * @param ye coordenada en y del pixel final.
-     * @param los valores promedio b,g,r en los pixeles en la region.
+     * @param img a promediar n pixeles
+     * @return arreglo con tres elementos que tienen los valores promedio rgb de los n pixeles, pero en orden bgr.
      */
     int* calculateAverageValueInRegion(int xb, int yb, int xe, int ye, Mat img);
 };

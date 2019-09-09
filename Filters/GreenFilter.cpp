@@ -1,6 +1,4 @@
 #include <GreenFilter.h>
-#include <iostream>
-using namespace std;
 /**
  * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
  * @param pathImage ruta de la imagen.
@@ -8,13 +6,14 @@ using namespace std;
 GreenFilter::GreenFilter(string pathImage){
     path = pathImage;
 }
-
+/**
+ * @brief aplica el filtro correspondiente.
+ */
 void GreenFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
     path = "../cache/green." + extension();
-    cout << "verde" + path << endl;
     imwrite(path,img);
 }
 /**

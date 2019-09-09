@@ -1,6 +1,4 @@
 #include <Filter.h>
-#include <iostream>
-using namespace std;
 /**
  * @brief regresa la ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
  * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.

@@ -34,8 +34,9 @@ SOURCES += \
     driver.cpp \
     ../Filters/RedFilter.cpp \
     ../Filters/GreenFilter.cpp \
-    ../Filters/BlueFilter.cpp \
-    ../Filters/Filter.cpp
+    ../Filters/Filter.cpp \
+    ../Filters/TileFilter.cpp \
+    bluefilter.cpp
 
 HEADERS += \
         gui.h \
@@ -43,8 +44,9 @@ HEADERS += \
     driver.h \
     ../Filters/RedFilter.h \
     ../Filters/GreenFilter.h \
-    ../Filters/BlueFilter.h \
-    ../Filters/Filter.h
+    ../Filters/Filter.h \
+    ../Filters/TileFilter.h \
+    bluefilter.h
 
 FORMS += \
         gui.ui \

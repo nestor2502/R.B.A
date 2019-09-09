@@ -14,9 +14,11 @@ class MosaicoForm : public QDialog
 public:
     explicit MosaicoForm(QWidget *parent = 0);
     ~MosaicoForm();
+    void setImageSize(int size);
 
 private:
     Ui::MosaicoForm *ui;
+    int imageSizeSelection;
 };
 
 #endif // MOSAICOFORM_H

@@ -16,6 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 
@@ -28,6 +29,7 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLineEdit *lineEdit;
+    QLCDNumber *lcdNumber;
 
     void setupUi(QDialog *MosaicoForm)
     {
@@ -42,7 +44,7 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         label = new QLabel(MosaicoForm);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 30, 181, 51));
+        label->setGeometry(QRect(30, 30, 141, 51));
         label->setStyleSheet(QStringLiteral("color: rgb(238, 238, 236);"));
         label_2 = new QLabel(MosaicoForm);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -52,6 +54,9 @@ public:
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(20, 170, 291, 31));
         lineEdit->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
+        lcdNumber = new QLCDNumber(MosaicoForm);
+        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
+        lcdNumber->setGeometry(QRect(180, 40, 171, 41));
 
         retranslateUi(MosaicoForm);
         QObject::connect(buttonBox, SIGNAL(accepted()), MosaicoForm, SLOT(accept()));

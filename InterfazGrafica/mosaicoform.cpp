@@ -12,3 +12,10 @@ MosaicoForm::~MosaicoForm()
 {
     delete ui;
 }
+
+void MosaicoForm::setImageSize(int size){
+    //ui->label_3->setText();
+    ui->lcdNumber->display(size);
+
+
+}

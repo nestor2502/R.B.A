@@ -37,7 +37,7 @@
     <rect>
      <x>30</x>
      <y>30</y>
-     <width>181</width>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
@@ -75,6 +75,16 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(85, 87, 87);</string>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>40</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
    </property>
   </widget>
  </widget>

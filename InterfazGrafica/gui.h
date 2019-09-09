@@ -15,6 +15,7 @@ class GUI : public QMainWindow
 public:
     explicit GUI(QWidget *parent = 0);
     ~GUI();
+    int getImageSize();
 
 private slots:
     void on_actionNuev_Imagen_triggered();
@@ -29,10 +30,15 @@ private slots:
 
     void on_actionFiltroMosaico_triggered();
 
+    void setImageFiltred(string key);
+
+
 private:
     Ui::GUI *ui;
     Driver *controlador = new Driver();
     string path;
+    int imageWidth;
+    int imageSizeSelection;
 };
 
 #endif // GUI_H

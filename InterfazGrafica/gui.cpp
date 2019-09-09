@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include "filemanager.cpp"
 #include <mosaicoform.h>
+#include <QInputDialog>
+#include <sstream>
 GUI::GUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GUI)
@@ -93,10 +95,16 @@ void GUI::on_actionFiltroMosaico_triggered()
 {
     if(path !=""){
     imageWidth = controlador->getImageSize(path);//se asigna el tamaño disponible
-    MosaicoForm *mosaico = new MosaicoForm(this);
-    mosaico->setImageSize(imageWidth);//);imageWidth);//se ingresa el ancho  disponible
-    mosaico->setModal(true);
-    mosaico->show();
+    std::string s;
+    std::stringstream out;
+    out << imageWidth;
+    s = out.str();
+    char buffer[100];
+    strcpy(buffer,s.c_str());
+    std::cout << buffer;
+    int size = QInputDialog::getInt(this, "Tamaño disponible", buffer);
+    controlador->applyTileFilter(path, size);
+    setImageFiltred("tile");
     }
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
@@ -121,6 +129,12 @@ void GUI::setImageFiltred(string key){
     if(key == "blue"){
         controlador->applyBlueFilter(path);
         QPixmap pix("../cache/blue.jpg");
+        int w = ui->label_2->width();
+        int h = ui->label_2->height();
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+    if(key == "tile"){
+        controlador->applyBlueFilter(path);
+        QPixmap pix("../cache/tile.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}

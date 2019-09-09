@@ -53,4 +53,5 @@ FORMS += \
     mosaicoform.ui
 
 RESOURCES += \
-    logo.qrc
+    logo.qrc \
+    cache.qrc

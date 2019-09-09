@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/cache">
+        <file>cache/tile.jpg</file>
+    </qresource>
+</RCC>

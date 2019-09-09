@@ -16,6 +16,11 @@ public:
     ~MosaicoForm();
     void setImageSize(int size);
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MosaicoForm *ui;
     int imageSizeSelection;

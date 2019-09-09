@@ -14,8 +14,17 @@ MosaicoForm::~MosaicoForm()
 }
 
 void MosaicoForm::setImageSize(int size){
-    //ui->label_3->setText();
     ui->lcdNumber->display(size);
 
+}
 
+void MosaicoForm::on_pushButton_clicked()
+{
+    this->close();
+
+}
+
+void MosaicoForm::on_pushButton_2_clicked()
+{
+    this->close();
 }

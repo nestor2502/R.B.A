@@ -12,7 +12,8 @@ int main()
     GreenFilter verde = GreenFilter("/home/naju/R.B.A/Filters/img2.jpg");
     BlueFilter azul = BlueFilter("/home/naju/R.B.A/Filters/img2.jpg");
     TileFilter mosaico = TileFilter("/home/naju/R.B.A/Filters/img2.jpg");
-    mosaico.setTileWidth(10);
+    mosaico.setTileWidth(4);
+    cout << mosaico.getPixelWidth() << endl;
     mosaico.applyFilter();
     verde.applyFilter();
     rojo.applyFilter();

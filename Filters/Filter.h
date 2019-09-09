@@ -4,7 +4,7 @@
 #include <opencv2/core/utility.hpp>
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/core.hpp>
-#include <string>
+#include <string.h>
 using namespace std;
 using namespace  cv;
 #ifndef Filter_H
@@ -26,6 +26,11 @@ protected:
      * @param img imagen a colorear.
      */
     virtual void paintRegion(int xb, int yb, int xe, int ye, Mat img);
+    /**
+     * @brief regresa la extension de la imagen.
+     * @return la extension de la imagen.
+     */
+    string extension();
 public:
     virtual ~Filter();
     /**
@@ -37,10 +42,5 @@ public:
      * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
      */
     string getPathImage(void);
-    /**
-     * @brief regresa la extension de la imagen.
-     * @return la extension de la imagen.
-     */
-    string extension();
 };
 #endif

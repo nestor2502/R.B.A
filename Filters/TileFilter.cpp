@@ -1,9 +1,12 @@
 #include <TileFilter.h>
-#include <omp.h>
-
+//#include <omp.h>
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+#define RGB 3
 TileFilter::TileFilter(string pathImage)
 {
-    TileFilter::path = pathImage;
+    path = pathImage;
 }
 
 int TileFilter::getPixelWidth()
@@ -14,46 +17,55 @@ int TileFilter::getPixelWidth()
 
 void TileFilter::setTileWidth(int width)
 {
-    TileFilter::tileWidth = width;
+    tileWidth = width;
 }
 
 void TileFilter::applyFilter()
 {
     Mat img = imread(path);
-    #pragma omp for
-        for (int i = 0; i < img.rows; i++)
-            paintRegion(i,0,i,img.cols,img);
+    paintRegion(0,0,img.cols,img.rows,img);
     path = "../cache/tile." + extension();
-#pragma omp barrier
-        imwrite(path,img);
-        imshow("tile",img);
+    cout << "mosaico" + path << endl;
+    imwrite(path,img);
+    cout << img.cols << endl;
+    cout << img.cols << endl;
 }
 
+int* TileFilter::calculateAverageValueInRegion(int xb, int yb, int xe, int ye, Mat img)
+{
+    int count = 0;
+    static int bgr[3];
+    bgr[0] = 0;
+    bgr[1] = 0;
+    bgr[2] = 0;
+    for (int i = yb; i < ye; i++)
+    {
+        for (int j = xb; j < xe; j++, count ++)
+        {
+            Vec3b pixel = img.at<Vec3b>(i,j);
+            bgr[0] += pixel[0];
+            bgr[1] += pixel[1];
+            bgr[2] += pixel[2];
+        }
+    }
+    //cout << bgr[0] << endl;
+    return bgr;
+}
 void TileFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
-    int i, average = 0, count = 0, j = 1;
-    for (i = yb; i < ye; i++)
+    int min;
+    for (int i = yb; i < ye; i++)
     {
-        average += (int)img.at<uchar>(xb,i);
-        count++;
-        if (i == j*tileWidth -1)
+        for (int j = xb; j < xe; j = j+tileWidth)
         {
-            average = average/count;
-            for (int k = i-(tileWidth-1);k <= i; k++)
+            if (xe < j+tileWidth)
+                min = xe;
+            else
+                min = j+tileWidth;
+            int *bgr = calculateAverageValueInRegion(j,i,min,i+1,img);
+            for (int k = j; k < min; k++)
             {
-                img.at<uchar>(xe,k) = (uchar)average;
-            }
-            average = 0;
-            count = 0;
-            j++;
-        }
-
-        if (i == ye-1 && i < j*tileWidth -1)
-        {
-            average = average/count;
-            for (int k = i-(count-1); k < ye; k++)
-            {
-                img.at<uchar>(xb,k) = (uchar)average;
+                img.at<Vec3b>(i,k) = {(uchar)bgr[0], (uchar)bgr[1], (uchar)bgr[2]};
             }
         }
     }

@@ -1,4 +1,6 @@
 #include <RedFilter.h>
+#include <iostream>
+using namespace std;
 /**
  * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
  * @param pathImage ruta de la imagen.
@@ -6,11 +8,13 @@
 RedFilter::RedFilter(string pathImage){
     path = pathImage;
 }
+
 void RedFilter::applyFilter()
 {
     Mat img = imread(path);
     paintRegion(0,0,img.rows,img.cols,img);
-    path = "../cache/red."+extension();
+    path = "../cache/red." + extension();
+    cout << "rojo" + path << endl;
     imwrite(path,img);
 }
 /**

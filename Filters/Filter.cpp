@@ -1,4 +1,6 @@
 #include <Filter.h>
+#include <iostream>
+using namespace std;
 /**
  * @brief regresa la ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
  * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
@@ -18,9 +20,9 @@ string Filter::extension()
         auxiliar += path[i];
     }
     string extension = "";
-    for (int i = auxiliar.size()-1; i >= 0; i--)
+    for (int i = auxiliar.length()-1; i >= 0; i--)
     {
-        extension += auxiliar[i];
+        extension += auxiliar.at(i);
     }
     return extension;
 }

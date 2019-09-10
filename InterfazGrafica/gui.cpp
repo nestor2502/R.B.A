@@ -52,13 +52,14 @@ void GUI::on_actionNuev_Imagen_triggered()
  */
 void GUI::on_actionGruardad_Archivo_triggered()
 {
-    if(path !=""){
-    QMessageBox::information(this, "...", "save");}
-
-    else{
-    QString path_temp =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
-    //controlador->saveImage(path_temp);
-    }
+    //int size = QInputDialog::getInt
+    QString name = QInputDialog::getText(this, "Guardar ","Ingresa un nombre para el archivo");
+    QString path_temp = QFileDialog::getExistingDirectory(this, tr("selecciona la carpeta"), ".", QFileDialog::ReadOnly);
+    //QMessageBox::information(this, "...", path_temp);
+    std::string _path = path_temp.toUtf8().constData();
+    std::string name2 = name.toUtf8().constData();
+    saveImageFiltred(_path, name2);
+    //}
 }
 /**
  * @brief GUI::on_actionFiltroRojo_triggered
@@ -67,7 +68,8 @@ void GUI::on_actionGruardad_Archivo_triggered()
 void GUI::on_actionFiltroRojo_triggered()
 {
     if(path !=""){
-    setImageFiltred("red");}
+    setImageFiltred("red");
+    tipoFiltro = "red";}
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -76,8 +78,9 @@ void GUI::on_actionFiltroRojo_triggered()
  */
 void GUI::on_actionFiltro_Verde_triggered()
 {
-     if(path !="")
+    if(path !=""){
      setImageFiltred("green");
+     tipoFiltro = "green";}
      else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -86,8 +89,9 @@ void GUI::on_actionFiltro_Verde_triggered()
  */
 void GUI::on_actionFiltro_Azul_triggered()
 {
-    if(path !="")
+    if(path !=""){
     setImageFiltred("blue");
+    tipoFiltro = "blue";}
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -115,7 +119,8 @@ void GUI::on_actionFiltroMosaico_triggered()
     }
     else if(size>0 && size<=imageWidth){
     controlador->applyTileFilter(path, size);
-    setImageFiltred("tile");}
+    setImageFiltred("tile");
+    tipoFiltro ="tile";}
     }
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
@@ -155,6 +160,14 @@ void GUI::setImageFiltred(string key){
         ui->actionGruardad_Archivo->setEnabled(true);}
 
     }
+
+void GUI::saveImageFiltred(string _path, string name){
+    //std::string _path = key.toUtf8().constData();
+    string ruta = _path+"/"+name+".jpg";
+    //QString str = QString::fromUtf8(ruta.c_str());
+    //QMessageBox::information(this, "...", str);
+    controlador->saveImage(ruta, tipoFiltro);
+}
 
 
 

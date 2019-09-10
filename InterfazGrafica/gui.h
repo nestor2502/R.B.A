@@ -32,6 +32,8 @@ private slots:
 
     void setImageFiltred(string key);
 
+    void saveImageFiltred(string _path, string name);
+
 
 private:
     Ui::GUI *ui;
@@ -39,6 +41,7 @@ private:
     string path;
     int imageWidth;
     int imageSizeSelection;
+    string tipoFiltro;
 };
 
 #endif // GUI_H

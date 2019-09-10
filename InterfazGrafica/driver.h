@@ -1,12 +1,18 @@
 #ifndef DRIVER_H
 #define DRIVER_H
 #include <string>
+#include "RedFilter.h"
+#include "GreenFilter.h"
+#include "BlueFilter.h"
+#include "TileFilter.h"
+#include "Filter.h"
 using namespace std;
 
 class Driver
 {
 private:
-    string path;
+
+
 public:
     Driver();
     void applyRedFilter(string path);
@@ -14,7 +20,11 @@ public:
     void applyBlueFilter(string path);
     void applyTileFilter(string path, int size);
     int getImageSize(string path);
-    void saveImage(string path);
+    void saveImage(string path, string key);
+    RedFilter *rojo;
+    GreenFilter *verde;
+    BlueFilter *azul;
+    TileFilter *tile;
 
 };
 

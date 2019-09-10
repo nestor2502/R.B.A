@@ -3,6 +3,7 @@
 #include "GreenFilter.h"
 #include "BlueFilter.h"
 #include "TileFilter.h"
+#include "Filter.h"
 using namespace std;
 Driver::Driver()
 {
@@ -13,8 +14,8 @@ Driver::Driver()
  * @param path
  * se aplica filtro rojo
  * */
-void Driver::applyRedFilter(string path){
-   RedFilter *rojo = new RedFilter(path);
+void Driver::applyRedFilter(string _path){
+    rojo = new RedFilter(_path);
     rojo->applyFilter();
 
 }
@@ -23,8 +24,8 @@ void Driver::applyRedFilter(string path){
  * @param path
  * se aplica filtro verde
  */
-void Driver::applyGreenFilter(string path){
-    GreenFilter *verde = new GreenFilter(path);
+void Driver::applyGreenFilter(string _path){
+    verde = new GreenFilter(_path);
     verde->applyFilter();
 }
 /**
@@ -32,8 +33,8 @@ void Driver::applyGreenFilter(string path){
  * @param path
  * se aplica filtro azul
 */
-void Driver::applyBlueFilter(string path){
-    BlueFilter *azul = new BlueFilter(path);
+void Driver::applyBlueFilter(string _path){
+    azul = new BlueFilter(_path);
     azul->applyFilter();
 }
 
@@ -43,8 +44,8 @@ void Driver::applyBlueFilter(string path){
  * @param size
  * se aplica filtro mosaico
  */
-void Driver::applyTileFilter(string path, int size){
-    TileFilter *tile = new TileFilter(path);
+void Driver::applyTileFilter(string _path, int size){
+    tile = new TileFilter(_path);
     tile->setTileWidth(size);
     tile->applyFilter();
 }
@@ -59,8 +60,24 @@ int Driver::getImageSize(string path){
     int size = tile1->getPixelWidth();
     return size;
 }
-
-void Driver::saveImage(string path){
-
+/**
+ * @brief Driver::saveImage
+ * @param _path
+ * @param key
+ * Medtodo que guarda la imagen filtrada
+ */
+void Driver::saveImage(string _path, string key){
+    if(key == "red"){
+        rojo->saveImage(_path);
+    }
+    if(key == "green"){
+        verde->saveImage(_path);
+    }
+    if(key == "blue"){
+        azul->saveImage(_path);
+    }
+    if(key == "tile"){
+        tile->saveImage(_path);
+    }
 }
 

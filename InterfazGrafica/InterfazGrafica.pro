@@ -36,7 +36,7 @@ SOURCES += \
     ../Filters/GreenFilter.cpp \
     ../Filters/Filter.cpp \
     ../Filters/TileFilter.cpp \
-    bluefilter.cpp
+    ../Filters/BlueFilter.cpp
 
 HEADERS += \
         gui.h \
@@ -46,12 +46,11 @@ HEADERS += \
     ../Filters/GreenFilter.h \
     ../Filters/Filter.h \
     ../Filters/TileFilter.h \
-    bluefilter.h
+    ../Filters/BlueFilter.h
 
 FORMS += \
         gui.ui \
     mosaicoform.ui
 
 RESOURCES += \
-    logo.qrc \
-    cache.qrc
+    logo.qrc

@@ -18,9 +18,9 @@ string Filter::extension()
         auxiliar += path[i];
     }
     string extension = "";
-    for (int i = auxiliar.size()-1; i >= 0; i--)
+    for (int i = auxiliar.length()-1; i >= 0; i--)
     {
-        extension += auxiliar[i];
+        extension += auxiliar.at(i);
     }
     return extension;
 }

@@ -6,12 +6,14 @@
 GreenFilter::GreenFilter(string pathImage){
     path = pathImage;
 }
-
+/**
+ * @brief aplica el filtro correspondiente.
+ */
 void GreenFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
-    path = "../cache/green."+extension();
+    path = "../cache/green." + extension();
     imwrite(path,img);
 }
 /**

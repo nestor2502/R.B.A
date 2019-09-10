@@ -6,11 +6,14 @@
 BlueFilter::BlueFilter(string pathImage){
     path = pathImage;
 }
+/**
+ * @brief aplica el filtro correspondiente.
+ */
 void BlueFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
-    path = "../cache/blue."+extension();
+    path = "../cache/blue." + extension();
     imwrite(path,img);
 }
 /**

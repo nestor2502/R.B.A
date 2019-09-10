@@ -1,7 +1,7 @@
 #include "driver.h"
 #include "RedFilter.h"
 #include "GreenFilter.h"
-#include "bluefilter.h"
+#include "BlueFilter.h"
 #include "TileFilter.h"
 using namespace std;
 Driver::Driver()

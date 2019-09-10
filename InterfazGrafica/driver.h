@@ -14,6 +14,7 @@ public:
     void applyBlueFilter(string path);
     void applyTileFilter(string path, int size);
     int getImageSize(string path);
+    void saveImage(string path);
 
 };
 

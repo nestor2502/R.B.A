@@ -60,3 +60,7 @@ int Driver::getImageSize(string path){
     return size;
 }
 
+void Driver::saveImage(string path){
+
+}
+

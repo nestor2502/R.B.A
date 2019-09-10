@@ -30,7 +30,6 @@ SOURCES += \
         main.cpp \
         gui.cpp \
     filemanager.cpp \
-    mosaicoform.cpp \
     driver.cpp \
     ../Filters/RedFilter.cpp \
     ../Filters/GreenFilter.cpp \
@@ -40,7 +39,6 @@ SOURCES += \
 
 HEADERS += \
         gui.h \
-    mosaicoform.h \
     driver.h \
     ../Filters/RedFilter.h \
     ../Filters/GreenFilter.h \
@@ -49,8 +47,7 @@ HEADERS += \
     ../Filters/BlueFilter.h
 
 FORMS += \
-        gui.ui \
-    mosaicoform.ui
+        gui.ui
 
 RESOURCES += \
     logo.qrc

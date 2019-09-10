@@ -5,7 +5,6 @@
 #include <QDir>
 #include <QPixmap>
 #include "filemanager.cpp"
-#include <mosaicoform.h>
 #include <QInputDialog>
 #include <sstream>
 GUI::GUI(QWidget *parent) :
@@ -18,6 +17,7 @@ GUI::GUI(QWidget *parent) :
     QWidget::setWindowTitle ( "R B A" );
     //setWindowFlags(Qt::WindowCloseButtonHint);
     Qt::WindowFlags flags = Qt::Window |  Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint; this->setWindowFlags(flags);
+    ui->actionGruardad_Archivo->setEnabled(false);
 }
 
 GUI::~GUI()
@@ -52,10 +52,13 @@ void GUI::on_actionNuev_Imagen_triggered()
  */
 void GUI::on_actionGruardad_Archivo_triggered()
 {
-    if(path !="")
-    QMessageBox::information(this, "...", "save");
-    else
-    QString save =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
+    if(path !=""){
+    QMessageBox::information(this, "...", "save");}
+
+    else{
+    QString path_temp =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
+    //controlador->saveImage(path_temp);
+    }
 }
 /**
  * @brief GUI::on_actionFiltroRojo_triggered
@@ -102,9 +105,17 @@ void GUI::on_actionFiltroMosaico_triggered()
     char buffer[100];
     strcpy(buffer,s.c_str());
     std::cout << buffer;
-    int size = QInputDialog::getInt(this, "Tamaño disponible", buffer);
+    string texto = "Tamaño disponible: ";
+    int size = QInputDialog::getInt(this, "Tamaño disponible: ", buffer);
+    if(size<=0){
+        QMessageBox::information(this, "...", "El tamaño debe ser mayor a 0");
+    }
+    else if(size>imageWidth){
+        QMessageBox::information(this, "...", "El tamaño debe ser menor o igual al especificado");
+    }
+    else if(size>0 && size<=imageWidth){
     controlador->applyTileFilter(path, size);
-    setImageFiltred("tile");
+    setImageFiltred("tile");}
     }
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
@@ -119,25 +130,29 @@ void GUI::setImageFiltred(string key){
         QPixmap pix("../cache/red.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+        ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "green"){
         controlador->applyGreenFilter(path);
         QPixmap pix("../cache/green.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+        ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "blue"){
         controlador->applyBlueFilter(path);
         QPixmap pix("../cache/blue.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+        ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "tile"){
         controlador->applyBlueFilter(path);
         QPixmap pix("../cache/tile.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+        ui->actionGruardad_Archivo->setEnabled(true);}
 
     }
 

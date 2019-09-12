@@ -110,10 +110,10 @@ public:
         GUI->setWindowTitle(QApplication::translate("GUI", "GUI", Q_NULLPTR));
         actionNuev_Imagen->setText(QApplication::translate("GUI", "Nueva Imagen", Q_NULLPTR));
         actionGruardad_Archivo->setText(QApplication::translate("GUI", "Guardar Imagen", Q_NULLPTR));
-        actionFiltroRojo->setText(QApplication::translate("GUI", "Filtro Rojo", Q_NULLPTR));
+        actionFiltroRojo->setText(QApplication::translate("GUI", "FiltroRojo", Q_NULLPTR));
         actionFiltro_Verde->setText(QApplication::translate("GUI", "Filtro Verde", Q_NULLPTR));
         actionFiltro_Azul->setText(QApplication::translate("GUI", "Filtro Azul", Q_NULLPTR));
-        actionFiltroMosaico->setText(QApplication::translate("GUI", "Filtro Mosaico", Q_NULLPTR));
+        actionFiltroMosaico->setText(QApplication::translate("GUI", "FiltroMosaico", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
         menuArchivo->setTitle(QApplication::translate("GUI", "Archivo", Q_NULLPTR));

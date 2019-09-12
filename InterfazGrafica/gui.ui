@@ -113,7 +113,7 @@
   </action>
   <action name="actionFiltroRojo">
    <property name="text">
-    <string>Filtro Rojo</string>
+    <string>FiltroRojo</string>
    </property>
   </action>
   <action name="actionFiltro_Verde">
@@ -128,7 +128,7 @@
   </action>
   <action name="actionFiltroMosaico">
    <property name="text">
-    <string>Filtro Mosaico</string>
+    <string>FiltroMosaico</string>
    </property>
   </action>
  </widget>

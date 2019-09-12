@@ -31,7 +31,7 @@ void TileFilter::applyFilter()
 {
     Mat img = imread(path);
     paintRegion(0,0,img.cols,img.rows,img);
-    path = "../cache/tile." + extension();
+    path = "RBAcache/tile." + extension();
     imwrite(path,img);
 }
 /**

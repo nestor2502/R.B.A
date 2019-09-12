@@ -155,7 +155,7 @@ void GUI::setImageFiltred(string key){
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "tile"){
         controlador->applyBlueFilter(path);
-        QPixmap pix("RBAcachee/tile.jpg");
+        QPixmap pix("RBAcache/tile.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));

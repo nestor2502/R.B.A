@@ -1,7 +1,7 @@
 #include <Filter.h>
 #ifndef BlueFilter_H
 #define BlueFilter_H
-class BlueFilter : Filter {
+class BlueFilter : public Filter {
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.

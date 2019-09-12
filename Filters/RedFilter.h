@@ -1,7 +1,7 @@
 #include <Filter.h>
 #ifndef RedFilter_H
 #define RedFilter_H
-class RedFilter : Filter {
+class RedFilter :public Filter {
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.

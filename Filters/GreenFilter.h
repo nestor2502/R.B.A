@@ -1,7 +1,7 @@
 #include <Filter.h>
 #ifndef GreenFilter_H
 #define GreenFilter_H
-class GreenFilter : Filter {
+class GreenFilter : public Filter {
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.

@@ -1,7 +1,7 @@
 #include <Filter.h>
 #ifndef TileFilter_H
 #define TileFilter_H
-class TileFilter : Filter {
+class TileFilter : public Filter {
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.

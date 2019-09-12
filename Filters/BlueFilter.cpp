@@ -13,7 +13,7 @@ void BlueFilter::applyFilter()
 {
     Mat img = imread (path);
     paintRegion(0,0,img.rows,img.cols,img);
-    path = "../cache/blue." + extension();
+    path = "RBAcache/blue." + extension();
     imwrite(path,img);
 }
 /**

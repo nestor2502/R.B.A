@@ -18,6 +18,8 @@ GUI::GUI(QWidget *parent) :
     //setWindowFlags(Qt::WindowCloseButtonHint);
     Qt::WindowFlags flags = Qt::Window |  Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint; this->setWindowFlags(flags);
     ui->actionGruardad_Archivo->setEnabled(false);
+    QDir().mkpath("RBAcache");
+
 }
 
 GUI::~GUI()
@@ -132,28 +134,28 @@ void GUI::on_actionFiltroMosaico_triggered()
 void GUI::setImageFiltred(string key){
     if(key == "red"){
         controlador->applyRedFilter(path);
-        QPixmap pix("../cache/red.jpg");
+        QPixmap pix("RBAcache/red.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "green"){
         controlador->applyGreenFilter(path);
-        QPixmap pix("../cache/green.jpg");
+        QPixmap pix("RBAcache/green.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "blue"){
         controlador->applyBlueFilter(path);
-        QPixmap pix("../cache/blue.jpg");
+        QPixmap pix("RBAcache/blue.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "tile"){
         controlador->applyBlueFilter(path);
-        QPixmap pix("../cache/tile.jpg");
+        QPixmap pix("RBAcachee/tile.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));

@@ -113,7 +113,7 @@ public:
         actionFiltroRojo->setText(QApplication::translate("GUI", "FiltroRojo", Q_NULLPTR));
         actionFiltro_Verde->setText(QApplication::translate("GUI", "Filtro Verde", Q_NULLPTR));
         actionFiltro_Azul->setText(QApplication::translate("GUI", "Filtro Azul", Q_NULLPTR));
-        actionFiltroMosaico->setText(QApplication::translate("GUI", "FiltroMosaico", Q_NULLPTR));
+        actionFiltroMosaico->setText(QApplication::translate("GUI", "Filtro Mosaico", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
         menuArchivo->setTitle(QApplication::translate("GUI", "Archivo", Q_NULLPTR));

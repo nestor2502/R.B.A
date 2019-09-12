@@ -164,10 +164,8 @@ void GUI::setImageFiltred(string key){
     }
 
 void GUI::saveImageFiltred(string _path, string name){
-    //std::string _path = key.toUtf8().constData();
+
     string ruta = _path+"/"+name+".jpg";
-    //QString str = QString::fromUtf8(ruta.c_str());
-    //QMessageBox::information(this, "...", str);
     controlador->saveImage(ruta, tipoFiltro);
 }
 

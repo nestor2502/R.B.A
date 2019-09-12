@@ -31,7 +31,11 @@ void TileFilter::applyFilter()
 {
     Mat img = imread(path);
     paintRegion(0,0,img.cols,img.rows,img);
+<<<<<<< HEAD
     path = "../cache/tile." + extension();
+=======
+    path = "RBAcache/tile." + extension();
+>>>>>>> Driver
     imwrite(path,img);
 }
 /**

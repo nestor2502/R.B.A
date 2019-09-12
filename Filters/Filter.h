@@ -32,6 +32,9 @@ protected:
      */
     string extension();
 public:
+    /**
+     * @brief Destructor de la clase Filter.
+     */
     virtual ~Filter();
     /**
      * @brief aplica el filtro correspondiente.
@@ -42,5 +45,20 @@ public:
      * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
      */
     string getPathImage(void);
+<<<<<<< HEAD
+=======
+    /**
+     * @brief verifica si una imagen se puede modificar.
+     * @param Imagepath ruta de la imagen a modificar.
+     * @return TRUE si es una imagen que se puede modificar, False en otro caso.
+     */
+    bool verifyImage(string Imagepath);
+    /**
+     * @brief guarda la imagen procesada en la ruta especificada, si aun no se le aplica un filtro, se guardara
+     *        la imagen original en la ruta especificada.
+     * @param path ruta donde se desea guardar la imagen.
+     */
+    void saveImage(string destinationPath);
+>>>>>>> Driver
 };
 #endif

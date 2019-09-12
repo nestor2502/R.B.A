@@ -10,9 +10,15 @@ private:
 public : FileManager(){
 
 }
+/**
+ *Se guarda lña ruta del archivo
+ */
 public: void openFilee(string image){
     path = image;
 }
+/**
+ *Se verifica que la imagen se pueda leer
+ */
 public: bool verifyImage(){
 
     Mat image = imread(path);
@@ -24,7 +30,9 @@ public: bool verifyImage(){
     }
 
 }
-
+/**
+  *Se verifica el archivo
+  */
 public:  bool verifyFile(){
     bool correct=false;
     bool correct_image = verifyImage();
@@ -33,6 +41,9 @@ public:  bool verifyFile(){
     }
     return correct;
 }
+/**
+  *Obtiene la ruta
+  */
 public : string getPath(){
         return path;
     }

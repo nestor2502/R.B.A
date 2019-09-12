@@ -3,7 +3,30 @@
  * @brief regresa la ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
  * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
  */
-string Filter::getPathImage() {return Filter::path;}
+string Filter::getPathImage()
+{
+    return Filter::path;
+}
+/**
+ * @brief verifica si una imagen se puede modificar.
+ * @param Imagepath ruta de la imagen a modificar.
+ * @return TRUE si es una imagen que se puede modificar, False en otro caso.
+ */
+bool Filter::verifyImage(string Imagepath)
+{
+    Mat img = imread(path);
+    return img.empty();
+}
+/**
+ * @brief guarda la imagen procesada en la ruta especificada, si aun no se le aplica un filtro, se guardara
+ *        la imagen original en la ruta especificada.
+ * @param path ruta donde se desea guardar la imagen.
+ */
+void Filter::saveImage(string destinationPath)
+{
+    Mat img = imread(path);
+    imwrite(destinationPath,img);
+}
 /**
  * @brief regresa la extension de la imagen.
  * @return la extension de la imagen.
@@ -37,5 +60,11 @@ void Filter::paintRegion(int xb, int yb, int xe, int ye, Mat img) {}
  * @brief aplica el filtro correspondiente.
  */
 void Filter::applyFilter(){}
-Filter::~Filter(){}
+/**
+ * @brief Destructor de la clase Filter.
+ */
+Filter::~Filter()
+{
+    delete this;
+}
 

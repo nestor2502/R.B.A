@@ -2,7 +2,8 @@
 #define GUI_H
 
 #include <QMainWindow>
-
+#include "driver.h"
+#include <string>
 namespace Ui {
 class GUI;
 }
@@ -14,6 +15,7 @@ class GUI : public QMainWindow
 public:
     explicit GUI(QWidget *parent = 0);
     ~GUI();
+    int getImageSize();
 
 private slots:
     void on_actionNuev_Imagen_triggered();
@@ -28,8 +30,18 @@ private slots:
 
     void on_actionFiltroMosaico_triggered();
 
+    void setImageFiltred(string key);
+
+    void saveImageFiltred(string _path, string name);
+
+
 private:
     Ui::GUI *ui;
+    Driver *controlador = new Driver();
+    string path;
+    int imageWidth;
+    int imageSizeSelection;
+    string tipoFiltro;
 };
 
 #endif // GUI_H

@@ -13,11 +13,7 @@ void RedFilter::applyFilter()
 {
     Mat img = imread(path);
     paintRegion(0,0,img.rows,img.cols,img);
-<<<<<<< HEAD
-    path = "../cache/rojo." + extension();
-=======
     path = "../cache/red." + extension();
->>>>>>> Driver
     imwrite(path,img);
 }
 /**

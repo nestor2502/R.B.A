@@ -4,7 +4,7 @@
 #include <opencv2/core/utility.hpp>
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/core.hpp>
-#include <string.h>
+#include <string>
 using namespace std;
 using namespace  cv;
 #ifndef Filter_H
@@ -45,8 +45,6 @@ public:
      * @return ruta donde se guardo la imagen a la que se le aplico el filtro correspondiente.
      */
     string getPathImage(void);
-<<<<<<< HEAD
-=======
     /**
      * @brief verifica si una imagen se puede modificar.
      * @param Imagepath ruta de la imagen a modificar.
@@ -59,6 +57,5 @@ public:
      * @param path ruta donde se desea guardar la imagen.
      */
     void saveImage(string destinationPath);
->>>>>>> Driver
 };
 #endif

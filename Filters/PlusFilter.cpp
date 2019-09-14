@@ -62,9 +62,9 @@ void PlusFilter::applyFilter()
  */
 void PlusFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
-    for (int i = xb; i < xe; i++) 
+    for (int i = xb; i < xe; i++)
     {
-        for (int j = yb; j < ye; j++) 
+        for (int j = yb; j < ye; j++)
         {
             Vec3b pixel = img.at<Vec3b>(i,j);
             int b = validateIntensity(pixel[0],deltaBlue);

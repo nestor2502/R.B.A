@@ -1,4 +1,4 @@
-#include <Filter.h>
+#include "Filter.h"
 #ifndef GreenFilter_H
 #define GreenFilter_H
 class GreenFilter : public Filter {

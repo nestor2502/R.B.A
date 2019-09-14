@@ -10,11 +10,13 @@ SOURCES += \
     Filter.cpp \
     GreenFilter.cpp \
     BlueFilter.cpp \
-    TileFilter.cpp
+    TileFilter.cpp \
+    PlusFilter.cpp
 
 HEADERS += \
     Filter.h \
     RedFilter.h \
     GreenFilter.h \
     BlueFilter.h \
-    TileFilter.h
+    TileFilter.h \
+    PlusFilter.h

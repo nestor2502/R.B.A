@@ -3,13 +3,18 @@
 #define PlusFilter_H
 class PlusFilter : public Filter {
 
+private:
+    int deltaRed;
+    int deltaGreen;
+    int deltaBlue;
+
 public:
     /**
      * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
      * @param pathImage ruta de la imagen.
      */
     PlusFilter(string pathImage);
-    
+
 
     /**
      * @brief aplica el filtro correspondiente.
@@ -25,11 +30,7 @@ public:
     void setIntensty(int x, int y, int z);
 
 protected:
-    int deltaRed;
-    int deltaGreen;
-    int deltaBlue;
 
-    
     /**
      * @brief colorea una region de pixeles del rectangulo de pixeles delimitado por los pixeles (xb,yb),(xe,ye).
      * @param xb coordenada en x del pixel inicial.

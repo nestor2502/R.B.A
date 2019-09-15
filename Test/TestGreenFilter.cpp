@@ -1,15 +1,15 @@
-#include <TestRedFilter.h>
+#include <TestGreenFilter.h>
 /**
- * @brief verifica que el unico color que tenga encendido es el rojo.
+ * @brief verifica que el unico color que tenga encendido es el verde.
  */
-void TestRedFilter::testApplyFilter()
+void TestGreenFilter::testApplyFilter()
 {
     string path;
     for (int i = 1; i < 8; i++) {
-        path = "TestFiles/img" + to_string(i) + ".jpg";
-        filter = new RedFilter(path);
+        path = "../Test/TestFiles/img" + to_string(i) + ".jpg";
+        filter = new GreenFilter(path);
         filter -> applyFilter();
-        Mat img = imread("RBAcache/red.jpg");
+        Mat img = imread("../Test/RBAcache/green.jpg");
         int red = 0, blue = 0, green = 0;
         for(int j = 0; j < img.rows; j++) {
             for (int k = 0; k <img.cols; k++)
@@ -20,6 +20,6 @@ void TestRedFilter::testApplyFilter()
                 red += (int)pixel[2];
             }
         }
-        CPPUNIT_ASSERT(red > green && red > blue);
+        CPPUNIT_ASSERT(green > red && green > blue);
     }
 }

@@ -15,7 +15,9 @@ SOURCES += \
     ../Filters/BlueFilter.cpp \
     ../Filters/PlusFilter.cpp \
     TestRedFilter.cpp \
-    TestFileManager.cpp
+    TestFileManager.cpp \
+    TestGreenFilter.cpp \
+    TestTileFilter.cpp
 HEADERS += \
     ../Filters/Filter.h \
     ../Filters/RedFilter.h \
@@ -25,4 +27,6 @@ HEADERS += \
     ../Filters/PlusFilter.h \
     TestRedFilter.h \
     include.h \
-    TestFileManager.h
+    TestFileManager.h \
+    TestGreenFilter.h \
+    TestTileFilter.h

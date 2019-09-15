@@ -1,37 +1,24 @@
 <?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
 <TestRun>
-  <FailedTests>
-    <FailedTest id="1">
-      <Name>TestFileManager::testVerifyImage</Name>
-      <FailureType>Error</FailureType>
-      <Message>uncaught exception of type std::exception (or derived).
-- basic_string::substr: __pos (which is 140) &gt; this-&gt;size() (which is 0)
-</Message>
-    </FailedTest>
-    <FailedTest id="4">
-      <Name>TestTileFilter::testApplyFilter</Name>
-      <FailureType>Assertion</FailureType>
-      <Location>
-        <File>TestTileFilter.cpp</File>
-        <Line>30</Line>
-      </Location>
-      <Message>assertion failed
-- Expression: averageValueInRegion(k,j,min,j+1,img)
-</Message>
-    </FailedTest>
-  </FailedTests>
+  <FailedTests></FailedTests>
   <SuccessfulTests>
+    <Test id="1">
+      <Name>TestFileManager::testVerifyImage</Name>
+    </Test>
     <Test id="2">
       <Name>TestRedFilter::testApplyFilter</Name>
     </Test>
     <Test id="3">
       <Name>TestGreenFilter::testApplyFilter</Name>
     </Test>
+    <Test id="4">
+      <Name>TestTileFilter::testApplyFilter</Name>
+    </Test>
   </SuccessfulTests>
   <Statistics>
     <Tests>4</Tests>
-    <FailuresTotal>2</FailuresTotal>
-    <Errors>1</Errors>
-    <Failures>1</Failures>
+    <FailuresTotal>0</FailuresTotal>
+    <Errors>0</Errors>
+    <Failures>0</Failures>
   </Statistics>
 </TestRun>

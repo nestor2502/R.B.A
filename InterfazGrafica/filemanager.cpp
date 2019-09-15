@@ -21,12 +21,20 @@ public: void openFilee(string image){
  */
 public: bool verifyImage(){
 
-    Mat image = imread(path);
-    if (image.empty()){
+    try {
+        Mat image = imread(path);
+        if (image.empty()){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    catch (cv::Exception) {
         return false;
     }
-    else{
-        return true;
+    catch(std::exception) {
+        return false;
     }
 
 }

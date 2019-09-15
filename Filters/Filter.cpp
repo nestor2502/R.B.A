@@ -14,7 +14,7 @@ string Filter::getPathImage()
  */
 bool Filter::verifyImage(string Imagepath)
 {
-    Mat img = imread(path);
+    Mat img = imread(Imagepath);
     return img.empty();
 }
 /**

@@ -1,10 +1,10 @@
-#include "driver.h"
-#include "RedFilter.h"
-#include "GreenFilter.h"
-#include "BlueFilter.h"
-#include "TileFilter.h"
-#include "Filter.h"
-#include "PlusFilter.h"
+#include <driver.h>
+#include <../Filters/RedFilter.h>
+#include <../Filters/GreenFilter.h>
+#include <../Filters/BlueFilter.h>
+#include <../Filters/TileFilter.h>
+#include <../Filters/Filter.h>
+#include <../Filters/PlusFilter.h>
 using namespace std;
 Driver::Driver()
 {
@@ -79,24 +79,23 @@ int Driver::getImageSize(string path){
 
 void Driver::saveImage(string _path, string key){
     if(key == "red"){
-       //rojo->saveImage(_path);
+       rojo->saveImage(_path);
 
     }
     if(key == "green"){
-       //verde->saveImage(_path);
+       verde->saveImage(_path);
 
     }
     if(key == "blue"){
-       //azul->saveImage(_path);
+       azul->saveImage(_path);
 
     }
     if(key == "tile"){
-       //tile->saveImage(_path);
+       tile->saveImage(_path);
 
     }
-    if(key == "plus"){//
-        //Filter.plus->saveImage(_path);
-
+    if(key == "plus"){
+        plus->saveImage(_path);
     }
 }
 

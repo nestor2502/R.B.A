@@ -12,10 +12,10 @@
       <Name>TestGreenFilter::testApplyFilter</Name>
     </Test>
     <Test id="4">
-      <Name>TestTileFilter::testApplyFilter</Name>
+      <Name>TestBluefilter::TestApplyBluefilter</Name>
     </Test>
     <Test id="5">
-      <Name>TestBluefilter::TestApplyBluefilter</Name>
+      <Name>TestTileFilter::testApplyFilter</Name>
     </Test>
   </SuccessfulTests>
   <Statistics>

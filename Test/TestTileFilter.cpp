@@ -61,9 +61,6 @@ bool TestTileFilter::averageValueInRegion(int xb, int yb, int xe, int ye, Mat im
             } else if(!inTheMarginOfError(b,pixel[0],50) &&
                       !inTheMarginOfError(g,pixel[1],50) &&
                       !inTheMarginOfError(r,pixel[2],50)) {
-                cout << to_string(b) + " : " + to_string(pixel[0])<<endl;
-                cout << to_string(g) + " : " + to_string(pixel[1])<<endl;
-                cout << to_string(b) + " : " + to_string(pixel[2])<<endl;
                 return false;
             }
         }

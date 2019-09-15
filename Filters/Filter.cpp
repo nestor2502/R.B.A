@@ -8,16 +8,6 @@ string Filter::getPathImage()
     return Filter::path;
 }
 /**
- * @brief verifica si una imagen se puede modificar.
- * @param Imagepath ruta de la imagen a modificar.
- * @return TRUE si es una imagen que se puede modificar, False en otro caso.
- */
-bool Filter::verifyImage(string Imagepath)
-{
-    Mat img = imread(Imagepath);
-    return img.empty();
-}
-/**
  * @brief guarda la imagen procesada en la ruta especificada, si aun no se le aplica un filtro, se guardara
  *        la imagen original en la ruta especificada.
  * @param path ruta donde se desea guardar la imagen.

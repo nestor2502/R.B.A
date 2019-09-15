@@ -6,6 +6,7 @@
 #include "BlueFilter.h"
 #include "TileFilter.h"
 #include "Filter.h"
+#include "PlusFilter.h"
 using namespace std;
 
 class Driver
@@ -21,10 +22,12 @@ public:
     void applyTileFilter(string path, int size);
     int getImageSize(string path);
     void saveImage(string path, string key);
+    void applyPlusFilter(string path, int r, int b, int g);
     RedFilter *rojo;
     GreenFilter *verde;
     BlueFilter *azul;
     TileFilter *tile;
+    PlusFilter *plus;
 
 };
 

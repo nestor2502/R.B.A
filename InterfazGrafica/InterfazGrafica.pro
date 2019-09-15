@@ -35,7 +35,8 @@ SOURCES += \
     ../Filters/GreenFilter.cpp \
     ../Filters/Filter.cpp \
     ../Filters/TileFilter.cpp \
-    ../Filters/BlueFilter.cpp
+    ../Filters/BlueFilter.cpp \
+    ../Filters/PlusFilter.cpp
 
 HEADERS += \
         gui.h \
@@ -44,7 +45,8 @@ HEADERS += \
     ../Filters/GreenFilter.h \
     ../Filters/Filter.h \
     ../Filters/TileFilter.h \
-    ../Filters/BlueFilter.h
+    ../Filters/BlueFilter.h \
+    ../Filters/PlusFilter.h
 
 FORMS += \
         gui.ui

@@ -57,7 +57,8 @@ SOURCES       = ../InterfazGrafica/main.cpp \
 		../Filters/GreenFilter.cpp \
 		../Filters/Filter.cpp \
 		../Filters/TileFilter.cpp \
-		../Filters/BlueFilter.cpp qrc_logo.cpp \
+		../Filters/BlueFilter.cpp \
+		../Filters/PlusFilter.cpp qrc_logo.cpp \
 		moc_gui.cpp
 OBJECTS       = main.o \
 		gui.o \
@@ -67,6 +68,7 @@ OBJECTS       = main.o \
 		Filter.o \
 		TileFilter.o \
 		BlueFilter.o \
+		PlusFilter.o \
 		qrc_logo.o \
 		moc_gui.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -149,14 +151,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Filters/GreenFilter.h \
 		../Filters/Filter.h \
 		../Filters/TileFilter.h \
-		../Filters/BlueFilter.h ../InterfazGrafica/main.cpp \
+		../Filters/BlueFilter.h \
+		../Filters/PlusFilter.h ../InterfazGrafica/main.cpp \
 		../InterfazGrafica/gui.cpp \
 		../InterfazGrafica/driver.cpp \
 		../Filters/RedFilter.cpp \
 		../Filters/GreenFilter.cpp \
 		../Filters/Filter.cpp \
 		../Filters/TileFilter.cpp \
-		../Filters/BlueFilter.cpp
+		../Filters/BlueFilter.cpp \
+		../Filters/PlusFilter.cpp
 QMAKE_TARGET  = InterfazGrafica
 DESTDIR       = 
 TARGET        = InterfazGrafica
@@ -343,8 +347,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../InterfazGrafica/logo.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../InterfazGrafica/gui.h ../InterfazGrafica/driver.h ../Filters/RedFilter.h ../Filters/GreenFilter.h ../Filters/Filter.h ../Filters/TileFilter.h ../Filters/BlueFilter.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../InterfazGrafica/main.cpp ../InterfazGrafica/gui.cpp ../InterfazGrafica/driver.cpp ../Filters/RedFilter.cpp ../Filters/GreenFilter.cpp ../Filters/Filter.cpp ../Filters/TileFilter.cpp ../Filters/BlueFilter.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../InterfazGrafica/gui.h ../InterfazGrafica/driver.h ../Filters/RedFilter.h ../Filters/GreenFilter.h ../Filters/Filter.h ../Filters/TileFilter.h ../Filters/BlueFilter.h ../Filters/PlusFilter.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../InterfazGrafica/main.cpp ../InterfazGrafica/gui.cpp ../InterfazGrafica/driver.cpp ../Filters/RedFilter.cpp ../Filters/GreenFilter.cpp ../Filters/Filter.cpp ../Filters/TileFilter.cpp ../Filters/BlueFilter.cpp ../Filters/PlusFilter.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../InterfazGrafica/gui.ui $(DISTDIR)/
 
 
@@ -387,6 +391,12 @@ compiler_moc_header_make_all: moc_gui.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_gui.cpp
 moc_gui.cpp: ../InterfazGrafica/driver.h \
+		../Filters/RedFilter.h \
+		../Filters/Filter.h \
+		../Filters/GreenFilter.h \
+		../Filters/BlueFilter.h \
+		../Filters/TileFilter.h \
+		../Filters/PlusFilter.h \
 		../InterfazGrafica/gui.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -412,11 +422,23 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 ####### Compile
 
 main.o: ../InterfazGrafica/main.cpp ../InterfazGrafica/gui.h \
-		../InterfazGrafica/driver.h
+		../InterfazGrafica/driver.h \
+		../Filters/RedFilter.h \
+		../Filters/Filter.h \
+		../Filters/GreenFilter.h \
+		../Filters/BlueFilter.h \
+		../Filters/TileFilter.h \
+		../Filters/PlusFilter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../InterfazGrafica/main.cpp
 
 gui.o: ../InterfazGrafica/gui.cpp ../InterfazGrafica/gui.h \
 		../InterfazGrafica/driver.h \
+		../Filters/RedFilter.h \
+		../Filters/Filter.h \
+		../Filters/GreenFilter.h \
+		../Filters/BlueFilter.h \
+		../Filters/TileFilter.h \
+		../Filters/PlusFilter.h \
 		../InterfazGrafica/ui_gui.h \
 		../InterfazGrafica/filemanager.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gui.o ../InterfazGrafica/gui.cpp
@@ -426,7 +448,8 @@ driver.o: ../InterfazGrafica/driver.cpp ../InterfazGrafica/driver.h \
 		../Filters/Filter.h \
 		../Filters/GreenFilter.h \
 		../Filters/BlueFilter.h \
-		../Filters/TileFilter.h
+		../Filters/TileFilter.h \
+		../Filters/PlusFilter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o driver.o ../InterfazGrafica/driver.cpp
 
 RedFilter.o: ../Filters/RedFilter.cpp ../Filters/RedFilter.h \
@@ -447,6 +470,10 @@ TileFilter.o: ../Filters/TileFilter.cpp ../Filters/TileFilter.h \
 BlueFilter.o: ../Filters/BlueFilter.cpp ../Filters/BlueFilter.h \
 		../Filters/Filter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BlueFilter.o ../Filters/BlueFilter.cpp
+
+PlusFilter.o: ../Filters/PlusFilter.cpp ../Filters/PlusFilter.h \
+		../Filters/Filter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PlusFilter.o ../Filters/PlusFilter.cpp
 
 qrc_logo.o: qrc_logo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_logo.o qrc_logo.cpp

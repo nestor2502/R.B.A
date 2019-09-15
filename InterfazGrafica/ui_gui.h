@@ -33,6 +33,7 @@ public:
     QAction *actionFiltro_Verde;
     QAction *actionFiltro_Azul;
     QAction *actionFiltroMosaico;
+    QAction *actionFiltro_Plus;
     QWidget *centralWidget;
     QLabel *label;
     QLabel *label_2;
@@ -60,11 +61,13 @@ public:
         actionFiltro_Azul->setObjectName(QStringLiteral("actionFiltro_Azul"));
         actionFiltroMosaico = new QAction(GUI);
         actionFiltroMosaico->setObjectName(QStringLiteral("actionFiltroMosaico"));
+        actionFiltro_Plus = new QAction(GUI);
+        actionFiltro_Plus->setObjectName(QStringLiteral("actionFiltro_Plus"));
         centralWidget = new QWidget(GUI);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 20, 271, 231));
+        label->setGeometry(QRect(10, 80, 271, 231));
         label->setStyleSheet(QStringLiteral("background-color: rgb(85, 87, 87);"));
         label->setPixmap(QPixmap(QString::fromUtf8(":/Logo.png")));
         label->setScaledContents(true);
@@ -99,6 +102,7 @@ public:
         menuFiltros->addAction(actionFiltro_Verde);
         menuFiltros->addAction(actionFiltro_Azul);
         menuFiltros->addAction(actionFiltroMosaico);
+        menuFiltros->addAction(actionFiltro_Plus);
 
         retranslateUi(GUI);
 
@@ -110,10 +114,11 @@ public:
         GUI->setWindowTitle(QApplication::translate("GUI", "GUI", Q_NULLPTR));
         actionNuev_Imagen->setText(QApplication::translate("GUI", "Nueva Imagen", Q_NULLPTR));
         actionGruardad_Archivo->setText(QApplication::translate("GUI", "Guardar Imagen", Q_NULLPTR));
-        actionFiltroRojo->setText(QApplication::translate("GUI", "FiltroRojo", Q_NULLPTR));
+        actionFiltroRojo->setText(QApplication::translate("GUI", "Filtro Rojo", Q_NULLPTR));
         actionFiltro_Verde->setText(QApplication::translate("GUI", "Filtro Verde", Q_NULLPTR));
         actionFiltro_Azul->setText(QApplication::translate("GUI", "Filtro Azul", Q_NULLPTR));
-        actionFiltroMosaico->setText(QApplication::translate("GUI", "FiltroMosaico", Q_NULLPTR));
+        actionFiltroMosaico->setText(QApplication::translate("GUI", "Filtro Mosaico", Q_NULLPTR));
+        actionFiltro_Plus->setText(QApplication::translate("GUI", "Filtro Plus", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
         menuArchivo->setTitle(QApplication::translate("GUI", "Archivo", Q_NULLPTR));

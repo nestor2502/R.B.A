@@ -12,6 +12,7 @@ GUI::GUI(QWidget *parent) :
     ui(new Ui::GUI)
 {
     ui->setupUi(this);
+    //tamaños establecidos para las ventanas
     setMaximumSize(QSize(1172,815));
     setMinimumSize(QSize(1172, 815));
     QWidget::setWindowTitle ( "R B A" );
@@ -19,7 +20,6 @@ GUI::GUI(QWidget *parent) :
     Qt::WindowFlags flags = Qt::Window |  Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint; this->setWindowFlags(flags);
     ui->actionGruardad_Archivo->setEnabled(false);
     QDir().mkpath("RBAcache");
-
 }
 
 GUI::~GUI()
@@ -28,10 +28,11 @@ GUI::~GUI()
 }
 /**
  * @brief GUI::on_actionNuev_Imagen_triggered
- * accion para alicar filtro rojo
+ * accion para seleccionar una imagen
  */
 void GUI::on_actionNuev_Imagen_triggered()
 {
+
     QString image =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
     FileManager manager;
     std::string _path = image.toUtf8().constData();//converir QString a string
@@ -70,8 +71,9 @@ void GUI::on_actionGruardad_Archivo_triggered()
 void GUI::on_actionFiltroRojo_triggered()
 {
     if(path !=""){
-    setImageFiltred("red");
-    tipoFiltro = "red";}
+        controlador->applyRedFilter(path);
+        setImageFiltred("red");
+        tipoFiltro = "red";}
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -81,8 +83,9 @@ void GUI::on_actionFiltroRojo_triggered()
 void GUI::on_actionFiltro_Verde_triggered()
 {
     if(path !=""){
-     setImageFiltred("green");
-     tipoFiltro = "green";}
+        controlador->applyGreenFilter(path);
+        setImageFiltred("green");
+        tipoFiltro = "green";}
      else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -92,8 +95,9 @@ void GUI::on_actionFiltro_Verde_triggered()
 void GUI::on_actionFiltro_Azul_triggered()
 {
     if(path !=""){
-    setImageFiltred("blue");
-    tipoFiltro = "blue";}
+        controlador->applyBlueFilter(path);
+        setImageFiltred("blue");
+        tipoFiltro = "blue";}
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
 }
 /**
@@ -133,36 +137,43 @@ void GUI::on_actionFiltroMosaico_triggered()
  */
 void GUI::setImageFiltred(string key){
     if(key == "red"){
-        controlador->applyRedFilter(path);
         QPixmap pix("RBAcache/red.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "green"){
-        controlador->applyGreenFilter(path);
         QPixmap pix("RBAcache/green.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "blue"){
-        controlador->applyBlueFilter(path);
         QPixmap pix("RBAcache/blue.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
     if(key == "tile"){
-        controlador->applyBlueFilter(path);
         QPixmap pix("RBAcache/tile.jpg");
+        int w = ui->label_2->width();
+        int h = ui->label_2->height();
+        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+        ui->actionGruardad_Archivo->setEnabled(true);}
+    if(key == "plus"){
+        QPixmap pix("RBAcache/plus.jpg");
         int w = ui->label_2->width();
         int h = ui->label_2->height();
         ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
         ui->actionGruardad_Archivo->setEnabled(true);}
 
     }
-
+/**
+ * @brief GUI::saveImageFiltred
+ * @param _path
+ * @param name
+ * metodo que guarda la imagen en la ruta seleccionada
+ */
 void GUI::saveImageFiltred(string _path, string name){
 
     string ruta = _path+"/"+name+".jpg";
@@ -171,3 +182,19 @@ void GUI::saveImageFiltred(string _path, string name){
 
 
 
+/**
+ * @brief GUI::on_actionFiltro_Plus_triggered
+ * metodo que aplica el filtro pls
+ */
+void GUI::on_actionFiltro_Plus_triggered()
+{
+    if(path !=""){
+        int a = QInputDialog::getInt(this, "Filtro plus ", "Ingrese el el cambio en el color rojo");
+        int b = QInputDialog::getInt(this, "Filtro plus ", "Ingrese el el cambio en el color verde");
+        int c = QInputDialog::getInt(this, "Filtro plus ", "Ingrese el el cambio en el color azul");
+
+        controlador->applyPlusFilter(path, a, b,c);
+        setImageFiltred("plus");//se aplica el filtro
+        tipoFiltro = "plus";}
+    else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
+}

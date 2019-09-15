@@ -4,6 +4,7 @@
 #include "BlueFilter.h"
 #include "TileFilter.h"
 #include "Filter.h"
+#include "PlusFilter.h"
 using namespace std;
 Driver::Driver()
 {
@@ -49,6 +50,15 @@ void Driver::applyTileFilter(string _path, int size){
     tile->setTileWidth(size);
     tile->applyFilter();
 }
+
+void Driver::applyPlusFilter(string _path,int a, int b, int c ){
+    plus = new PlusFilter(_path);
+    plus->setIntensity(a,b,c);
+    plus->applyFilter();
+}
+
+
+
 /**
  * @brief Driver::getImageSize
  * @param path
@@ -66,18 +76,27 @@ int Driver::getImageSize(string path){
  * @param key
  * Medtodo que guarda la imagen filtrada
  */
+
 void Driver::saveImage(string _path, string key){
     if(key == "red"){
-        rojo->saveImage(_path);
+       //rojo->saveImage(_path);
+
     }
     if(key == "green"){
-        verde->saveImage(_path);
+       //verde->saveImage(_path);
+
     }
     if(key == "blue"){
-        azul->saveImage(_path);
+       //azul->saveImage(_path);
+
     }
     if(key == "tile"){
-        tile->saveImage(_path);
+       //tile->saveImage(_path);
+
+    }
+    if(key == "plus"){//
+        //Filter.plus->saveImage(_path);
+
     }
 }
 

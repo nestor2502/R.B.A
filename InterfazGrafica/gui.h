@@ -35,6 +35,8 @@ private slots:
     void saveImageFiltred(string _path, string name);
 
 
+    void on_actionFiltro_Plus_triggered();
+
 private:
     Ui::GUI *ui;
     Driver *controlador = new Driver();

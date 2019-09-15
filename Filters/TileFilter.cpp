@@ -22,7 +22,10 @@ int TileFilter::getPixelWidth()
  */
 void TileFilter::setTileWidth(int width)
 {
-    tileWidth = width;
+    if (width > getPixelWidth() || width < 1)
+        tileWidth = 1;
+    else
+        tileWidth = width;
 }
 /**
  * @brief aplica el filtro correspondiente.

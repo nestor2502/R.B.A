@@ -12,7 +12,7 @@ RedFilter::RedFilter(string pathImage){
 void RedFilter::applyFilter()
 {
     Mat img = imread(path);
-    paintRegion(0,0,img.rows,img.cols,img);
+    paintRegion(0,0,img.cols,img.rows,img);
     path = "RBAcache/red." + extension();
     imwrite(path,img);
 }
@@ -26,8 +26,8 @@ void RedFilter::applyFilter()
  */
 void RedFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
-    for (int i = xb; i < xe; i++) {
-        for (int j = yb; j < ye; j++) {
+    for (int i = yb; i < ye; i++) {
+        for (int j = xb; j < xe; j++) {
             Vec3b pixel = img.at<Vec3b>(i,j);
             int r = pixel[2];
             img.at<Vec3b>(i,j) = {0,0,(uchar)r};

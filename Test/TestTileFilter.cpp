@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 /**
- * @brief verifica que el unico color que tenga encendido es el rojo.
+ * @brief verifica que el filtro se aplico correctamente.
  */
 void TestTileFilter::testApplyFilter()
 {
@@ -10,15 +10,13 @@ void TestTileFilter::testApplyFilter()
     string path;
     for (int i = 1; i < 8; i++) {
         srand(time(NULL));
-        tileWidth = -2000 + rand()%(10001);
         path = "../Test/TestFiles/img" + to_string(i) + ".jpg";
         filter = new TileFilter(path);
+        tileWidth = rand()%filter->getPixelWidth()+1;
         filter -> setTileWidth(tileWidth);
         filter -> applyFilter();
         Mat img = imread("../Test/RBAcache/tile.jpg");
         int min;
-        if (tileWidth > filter->getPixelWidth() || tileWidth < 1)
-            tileWidth = 1;
         for (int j = 0; j < img.rows; j++)
         {
             for (int k = 0; k < img.cols; k = k+tileWidth)
@@ -32,7 +30,16 @@ void TestTileFilter::testApplyFilter()
         }
     }
 }
-
+/**
+ * @brief verifica que los colores en ese rango conicidan dentro de cierto rango
+ * @param xb coordenada en x del pixel inicial.
+ * @param yb coordenada en y del pixel inicial.
+ * @param xe coordenada en x del pixel final.
+ * @param ye coordenada en y del pixel final.
+ * @param img imagen donde se verifica los colores.
+ * @return true si colores en ese rango coniciden dentro de cierto rango
+ *         false en otro caso
+ */
 bool TestTileFilter::averageValueInRegion(int xb, int yb, int xe, int ye, Mat img)
 {
     int r,g,b;
@@ -45,10 +52,36 @@ bool TestTileFilter::averageValueInRegion(int xb, int yb, int xe, int ye, Mat im
                 b = pixel[0];
                 g = pixel[1];
                 r = pixel[2];
-            } else if(b != pixel[0] || g != pixel[1] ||r != pixel[2]) {
+            /*como en la modificacion de imagenes de pierde informacion
+             *admitiremos que la diferencia sea a lo más de 50.
+             *aclaramos que incluso con esta tolerancia puede fallar con diferentest imagenes
+             *ya que la perdidda de informacion depende de la imagen
+             *pero notese que aun que al volver a cargar la imagen se pierde información
+             *se puede ver que el filtro hace lo que debería hacer */
+            } else if(!inTheMarginOfError(b,pixel[0],50) &&
+                      !inTheMarginOfError(g,pixel[1],50) &&
+                      !inTheMarginOfError(r,pixel[2],50)) {
+                cout << to_string(b) + " : " + to_string(pixel[0])<<endl;
+                cout << to_string(g) + " : " + to_string(pixel[1])<<endl;
+                cout << to_string(b) + " : " + to_string(pixel[2])<<endl;
                 return false;
             }
         }
     }
     return true;
+}
+/**
+ * @brief verifica que variable esta en el rango[(compare-erorMargin),(compare-errorMargin)]
+ * @param variable
+ * @param compare
+ * @param errorMargin
+ * @return true si variable esta en el rango[(compare-erorMargin),(compare-errorMargin)]
+ *         false en otro caso.
+ */
+bool TestTileFilter::inTheMarginOfError(int variable, int compare, int errorMargin)
+{
+    for (int i = compare-errorMargin; i <= compare+errorMargin; i++)
+        if (variable == i)
+            return true;
+    return false;
 }

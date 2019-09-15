@@ -8,6 +8,9 @@ class TestGreenFilter : public CppUnit::TestFixture
     CPPUNIT_TEST(testApplyFilter);
     CPPUNIT_TEST_SUITE_END();
 public:
+    /**
+     * @brief verifica que el filtro se aplico correctamente.
+     */
     void testApplyFilter();
 private:
     GreenFilter *filter;

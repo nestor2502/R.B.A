@@ -1,6 +1,6 @@
 #include <TestRedFilter.h>
 /**
- * @brief verifica que el unico color que tenga encendido es el rojo.
+ * @brief verifica que el filtro se aplico correctamente
  */
 void TestRedFilter::testApplyFilter()
 {

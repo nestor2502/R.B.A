@@ -1,4 +1,7 @@
 #include <TestFileManager.h>
+/**
+ * @brief verifica que el archivo dado mediante una ruta sea imagen que se pueda modificar
+ */
 void TestFileManager::testVerifyImage()
 {
     string path;
@@ -7,8 +10,8 @@ void TestFileManager::testVerifyImage()
         manager->openFilee(path);
         CPPUNIT_ASSERT(manager->verifyFile());
     }
-    //EL archivo noimg.jpg es solo un archivo creado de la siguiente manera en la carpeta TestFiles
-    //$touch noimg.jpg osea es un archivo sin ningun tipo de información.
+    /*EL archivo noimg.jpg es solo un archivo creado de la siguiente manera en la carpeta TestFiles
+     *$touch noimg.jpg que es un archivo sin ningun tipo de información*/
     manager->openFilee("../Test/TestFiles/noimg.jpg");
     CPPUNIT_ASSERT(!manager->verifyImage());
     manager->openFilee("../Test/TestFiles/img.txt");

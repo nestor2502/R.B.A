@@ -1,7 +1,4 @@
 #include <TestGreenFilter.h>
-/**
- * @brief verifica que el unico color que tenga encendido es el verde.
- */
 void TestGreenFilter::testApplyFilter()
 {
     string path;

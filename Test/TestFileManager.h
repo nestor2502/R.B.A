@@ -8,6 +8,9 @@ class TestFileManager : public CppUnit::TestFixture
     CPPUNIT_TEST(testVerifyImage);
     CPPUNIT_TEST_SUITE_END();
 public:
+    /**
+     * @brief verifica que el archivo dado mediante una ruta sea imagen que se pueda modificar
+     */
     void testVerifyImage();
 private:
     FileManager *manager = new FileManager();

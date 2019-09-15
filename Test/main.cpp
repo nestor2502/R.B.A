@@ -5,9 +5,11 @@
 #include <TestGreenFilter.h>
 #include <TestFileManager.h>
 #include <TestTileFilter.h>
+#include <TestBlueFilter.h>
 CPPUNIT_TEST_SUITE_REGISTRATION(TestFileManager);
 CPPUNIT_TEST_SUITE_REGISTRATION(TestRedFilter);
 CPPUNIT_TEST_SUITE_REGISTRATION(TestGreenFilter);
+CPPUNIT_TEST_SUITE_REGISTRATION(TestBluefilter);
 CPPUNIT_TEST_SUITE_REGISTRATION(TestTileFilter);
 int main()
 {

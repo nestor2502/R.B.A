@@ -62,7 +62,8 @@ SOURCES       = main.cpp \
 		TestRedFilter.cpp \
 		TestFileManager.cpp \
 		TestGreenFilter.cpp \
-		TestTileFilter.cpp 
+		TestTileFilter.cpp \
+		TestBlueFilter.cpp 
 OBJECTS       = main.o \
 		RedFilter.o \
 		GreenFilter.o \
@@ -73,7 +74,8 @@ OBJECTS       = main.o \
 		TestRedFilter.o \
 		TestFileManager.o \
 		TestGreenFilter.o \
-		TestTileFilter.o
+		TestTileFilter.o \
+		TestBlueFilter.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -154,7 +156,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		include.h \
 		TestFileManager.h \
 		TestGreenFilter.h \
-		TestTileFilter.h main.cpp \
+		TestTileFilter.h \
+		TestBlueFilter.h main.cpp \
 		../Filters/RedFilter.cpp \
 		../Filters/GreenFilter.cpp \
 		../Filters/Filter.cpp \
@@ -164,7 +167,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		TestRedFilter.cpp \
 		TestFileManager.cpp \
 		TestGreenFilter.cpp \
-		TestTileFilter.cpp
+		TestTileFilter.cpp \
+		TestBlueFilter.cpp
 QMAKE_TARGET  = Test
 DESTDIR       = 
 TARGET        = Test
@@ -371,7 +375,9 @@ main.o: main.cpp include.h \
 		TestFileManager.h \
 		../InterfazGrafica/filemanager.cpp \
 		TestTileFilter.h \
-		../Filters/TileFilter.h
+		../Filters/TileFilter.h \
+		TestBlueFilter.h \
+		../Filters/BlueFilter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 RedFilter.o: ../Filters/RedFilter.cpp ../Filters/RedFilter.h \
@@ -419,6 +425,12 @@ TestTileFilter.o: TestTileFilter.cpp TestTileFilter.h \
 		../Filters/Filter.h \
 		include.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TestTileFilter.o TestTileFilter.cpp
+
+TestBlueFilter.o: TestBlueFilter.cpp TestBlueFilter.h \
+		../Filters/BlueFilter.h \
+		../Filters/Filter.h \
+		include.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TestBlueFilter.o TestBlueFilter.cpp
 
 ####### Install
 

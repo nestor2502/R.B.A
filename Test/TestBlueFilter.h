@@ -1,7 +1,7 @@
-#ifndef TESTBLUEFILTER_H
-#define TESTBLUEFILTER_H
 #include <../Filters/BlueFilter.h>
 #include <include.h>
+#ifndef TESTBLUEFILTER_H
+#define TESTBLUEFILTER_H
 
 class TestBluefilter : public CppUnit::TestFixture
 {

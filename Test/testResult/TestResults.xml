@@ -14,9 +14,12 @@
     <Test id="4">
       <Name>TestTileFilter::testApplyFilter</Name>
     </Test>
+    <Test id="5">
+      <Name>TestBluefilter::TestApplyBluefilter</Name>
+    </Test>
   </SuccessfulTests>
   <Statistics>
-    <Tests>4</Tests>
+    <Tests>5</Tests>
     <FailuresTotal>0</FailuresTotal>
     <Errors>0</Errors>
     <Failures>0</Failures>

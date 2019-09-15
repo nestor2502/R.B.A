@@ -10,7 +10,7 @@ que probablemente le pida en repetidas veces su contraseña para poder instalar 
 cd ../ruta/R.B.A/
 ./install.sh
 ```
-si no puede instarlo porfavor cheque las instrucciones de (opencv)[]
+si no puede instarlo porfavor cheque las instrucciones de (opencv)[https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html], o checa nuestro (README.txt)[https://github.com/nestor2502/R.B.A/blob/master/README.txt]
 Run
 ---
 Para poder ejecutar el programa deberá de ejecutar el script (run.sh)[https://github.com/nestor2502/R.B.A/blob/master/run.sh], el script se ejecuta de la siguiente forma.

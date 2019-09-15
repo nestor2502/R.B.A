@@ -34,8 +34,9 @@ private slots:
 
     void saveImageFiltred(string _path, string name);
 
-
     void on_actionFiltro_Plus_triggered();
+
+    void showImage(QString path);
 
 private:
     Ui::GUI *ui;

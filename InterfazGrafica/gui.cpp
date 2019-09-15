@@ -16,7 +16,6 @@ GUI::GUI(QWidget *parent) :
     setMaximumSize(QSize(1172,815));
     setMinimumSize(QSize(1172, 815));
     QWidget::setWindowTitle ( "R B A" );
-    //setWindowFlags(Qt::WindowCloseButtonHint);
     Qt::WindowFlags flags = Qt::Window |  Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint; this->setWindowFlags(flags);
     ui->actionGruardad_Archivo->setEnabled(false);
     QDir().mkpath("RBAcache");
@@ -32,7 +31,7 @@ GUI::~GUI()
  */
 void GUI::on_actionNuev_Imagen_triggered()
 {
-
+    ui->label_2->clear();
     QString image =  QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath());
     FileManager manager;
     std::string _path = image.toUtf8().constData();//converir QString a string
@@ -46,7 +45,7 @@ void GUI::on_actionNuev_Imagen_triggered()
         ui->label->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));}
 
    else{
-       QMessageBox::information(this, "...", "Archivo no aceptado");
+       QMessageBox::information(this, "...", "Archivo no seleccionado o archivo no aceptado");
    }
 }
 /**
@@ -55,14 +54,12 @@ void GUI::on_actionNuev_Imagen_triggered()
  */
 void GUI::on_actionGruardad_Archivo_triggered()
 {
-    //int size = QInputDialog::getInt
     QString name = QInputDialog::getText(this, "Guardar ","Ingresa un nombre para el archivo");
     QString path_temp = QFileDialog::getExistingDirectory(this, tr("selecciona la carpeta"), ".", QFileDialog::ReadOnly);
     //QMessageBox::information(this, "...", path_temp);
     std::string _path = path_temp.toUtf8().constData();
     std::string name2 = name.toUtf8().constData();
     saveImageFiltred(_path, name2);
-    //}
 }
 /**
  * @brief GUI::on_actionFiltroRojo_triggered
@@ -137,35 +134,20 @@ void GUI::on_actionFiltroMosaico_triggered()
  */
 void GUI::setImageFiltred(string key){
     if(key == "red"){
-        QPixmap pix("RBAcache/red.jpg");
-        int w = ui->label_2->width();
-        int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-        ui->actionGruardad_Archivo->setEnabled(true);}
+        QString r = "RBAcache/red.jpg";
+        showImage(r);}
     if(key == "green"){
-        QPixmap pix("RBAcache/green.jpg");
-        int w = ui->label_2->width();
-        int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-        ui->actionGruardad_Archivo->setEnabled(true);}
+        QString r = "RBAcache/green.jpg";
+        showImage(r);}
     if(key == "blue"){
-        QPixmap pix("RBAcache/blue.jpg");
-        int w = ui->label_2->width();
-        int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-        ui->actionGruardad_Archivo->setEnabled(true);}
+        QString r = "RBAcache/blue.jpg";
+        showImage(r);}
     if(key == "tile"){
-        QPixmap pix("RBAcache/tile.jpg");
-        int w = ui->label_2->width();
-        int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-        ui->actionGruardad_Archivo->setEnabled(true);}
+        QString r = "RBAcache/tile.jpg";
+        showImage(r);}
     if(key == "plus"){
-        QPixmap pix("RBAcache/plus.jpg");
-        int w = ui->label_2->width();
-        int h = ui->label_2->height();
-        ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
-        ui->actionGruardad_Archivo->setEnabled(true);}
+        QString r = "RBAcache/plus.jpg";
+        showImage(r);}
 
     }
 /**
@@ -197,4 +179,13 @@ void GUI::on_actionFiltro_Plus_triggered()
         setImageFiltred("plus");//se aplica el filtro
         tipoFiltro = "plus";}
     else{QMessageBox::information(this, "...", "No hay una imagen cargada");}
+}
+
+void GUI::showImage(QString _path){
+    QPixmap pix(_path);
+    int w = ui->label_2->width();
+    int h = ui->label_2->height();
+    ui->label_2->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+    ui->actionGruardad_Archivo->setEnabled(true);
+
 }

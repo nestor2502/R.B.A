@@ -27,7 +27,7 @@ public:
      * @param y cambio en la intensidad de los verdes.
      * @param z cambio en la intensidad de los azules.
      */
-    void setIntensty(int x, int y, int z);
+    void setIntensity(int x, int y, int z);
 
 protected:
 

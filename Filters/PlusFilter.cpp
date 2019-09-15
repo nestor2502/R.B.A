@@ -1,4 +1,4 @@
-#include <PlusFilter.h>
+#include "PlusFilter.h"
 /**
  * @brief Constructor que recibe la ruta de la imagen a la cual se le aplicara el filtro.
  * @param pathImage ruta de la imagen.
@@ -14,7 +14,7 @@ PlusFilter::PlusFilter(string pathImage)
  * @param y cambio en la intensidad de los verdes.
  * @param z cambio en la intensidad de los azules.
  */
-void PlusFilter::setIntensty(int x, int y, int z)
+void PlusFilter::setIntensity(int x, int y, int z)
 {
     deltaRed=x;
     deltaGreen=y;
@@ -47,8 +47,9 @@ int PlusFilter::validateIntensity(int currentIntensity,int intensityChange)
 void PlusFilter::applyFilter()
 {
     Mat img = imread(path);
+    waitKey(0);
     paintRegion(0,0,img.cols,img.rows,img);
-    path = "RBAcache/plus." + extension();
+    path ="RBAcache/plus." + extension();
     imwrite(path,img);
 }
 
@@ -62,14 +63,14 @@ void PlusFilter::applyFilter()
  */
 void PlusFilter::paintRegion(int xb, int yb, int xe, int ye, Mat img)
 {
-    for (int i = xb; i < xe; i++)
+    for (int i = yb; i < ye; i++)
     {
-        for (int j = yb; j < ye; j++)
+        for (int j = xb; j < xe; j++)
         {
             Vec3b pixel = img.at<Vec3b>(i,j);
-            int b = validateIntensity(pixel[0],deltaBlue);
-            int g = validateIntensity(pixel[1],deltaGreen);
-            int r = validateIntensity(pixel[2],deltaRed);
+            int b = validateIntensity((int)pixel[0],deltaBlue);
+            int g = validateIntensity((int)pixel[1],deltaGreen);
+            int r = validateIntensity((int)pixel[2],deltaRed);
             img.at<Vec3b>(i,j) = {(uchar)b,(uchar)g,(uchar)r};
         }
     }

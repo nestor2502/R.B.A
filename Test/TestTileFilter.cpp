@@ -56,7 +56,7 @@ bool TestTileFilter::averageValueInRegion(int xb, int yb, int xe, int ye, Mat im
              *admitiremos que la diferencia sea a lo más de 50.
              *aclaramos que incluso con esta tolerancia puede fallar con diferentest imagenes
              *ya que la perdidda de informacion depende de la imagen
-             *pero notese que aun que al volver a cargar la imagen se pierde información
+             *pero notese que aunque al volver a cargar la imagen se pierde información
              *se puede ver que el filtro hace lo que debería hacer */
             } else if(!inTheMarginOfError(b,pixel[0],50) &&
                       !inTheMarginOfError(g,pixel[1],50) &&

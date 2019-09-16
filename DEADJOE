@@ -1,0 +1,27 @@
+
+*** These modified files were found in JOE when it aborted on Sun Sep 15 18:58:42 2019
+*** JOE was aborted because the terminal closed
+
+*** File '/home/naju/Escritorio/R.B.A/.git/COMMIT_EDITMSG'
+
+
+# Por favor ingrese el mensaje del commit para sus cambios. Las líneas que comiencen
+# con '#' serán ignoradas, y un mensaje vacío aborta el commit.
+#
+# En la rama about/install
+# Cambios a ser confirmados:
+#	modificado:     README.md
+#	nuevo archivo:  README.txt
+#	nuevo archivo:  install.sh
+#
+
+*** File '(Unnamed)'
+/home/naju/R.B.A/.git/COMMIT_EDITMSG
+/home/naju/Escritorio/R.B.A/.git/MERGE_MSG
+/home/naju/Escritorio/R.B.A/.git/COMMIT_EDITMSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
